@@ -3,6 +3,13 @@
     <label>Form (Universal Budget OFM Guest)</label>
     <description>Guest-safe, read-only access to the Outbound Funds budget tree for public sites. Record visibility additionally requires one guest sharing rule on Budget - the children are master-detail and follow the parent.</description>
     <hasActivationRequired>false</hasActivationRequired>
+    <!-- The read-only grid loads through this @AuraEnabled controller; guests need class
+         access to invoke it. Writes are still barred by object/field perms, the platform
+         guest lockdown, and USER_MODE DML. -->
+    <classAccesses>
+        <apexClass>FlowToolKit__BudgetGridController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <field>Budget__c.Description__c</field>
         <readable>true</readable>
