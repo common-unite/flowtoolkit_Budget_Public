@@ -52,11 +52,22 @@ flows:
                     namespace_inject: FlowToolKit
                 ui_options:
                     name: "Deploy NPC grantmaking config (unpackaged)"
+            # Production-grade orgs deploy flows as Draft (scratch orgs auto-activate)
+            4.15:
+                task: activate_flow
+                options:
+                    developer_names:
+                        - BudgetCategory_After_Save_Resequence_Positions
+                        - BudgetPeriod_After_Save_Budget_Automation
+                        - BudgetCategoryValue_After_Update_Sync_Line_Item_Names
+                        - IndividualApplication_After_Create_Clone_Template_Budget
+                ui_options:
+                    name: "Activate budget automation flows"
             # Unpackaged permission sets deploy in 4.1, AFTER the step-3 assignment pass
             4.2:
                 task: assign_permission_sets
                 options:
-                    api_names: Form_Universal_Budget_NPC,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
+                    api_names: Form_Universal_Budget_NPC_User,Form_Universal_Budget_NPC_Manager,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
             # Demo budget seed data (idempotent, reruns safely)
             4.3:
                 task: execute_anon
@@ -110,10 +121,21 @@ flows:
                     namespace_inject: FlowToolKit
                 ui_options:
                     name: "Deploy Outbound Funds budget config (unpackaged)"
+            # Production-grade orgs deploy flows as Draft (scratch orgs auto-activate)
+            4.15:
+                task: activate_flow
+                options:
+                    developer_names:
+                        - OFM_Budget_Category_After_Save_Resequence_Positions
+                        - OFM_Budget_Period_After_Save_Budget_Automation
+                        - OFM_Budget_Value_After_Update_Sync_Line_Item_Names
+                        - OFM_Funding_Request_After_Create_Clone_Template_Budget
+                ui_options:
+                    name: "Activate budget automation flows"
             4.2:
                 task: assign_permission_sets
                 options:
-                    api_names: Form_Universal_Budget_OFM,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
+                    api_names: Form_Universal_Budget_OFM_User,Form_Universal_Budget_OFM_Manager,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
             # Demo dataset (idempotent; re-exercises the clone flow on every run)
             4.3:
                 task: execute_anon
