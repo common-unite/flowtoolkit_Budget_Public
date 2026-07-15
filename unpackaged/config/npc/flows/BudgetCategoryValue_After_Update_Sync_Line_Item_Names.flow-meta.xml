@@ -5,7 +5,7 @@
         <label>Budget Trigger Handler</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>BudgetTriggerHandler_Invocable</actionName>
+        <actionName>FlowToolKit__BudgetTriggerHandler_Invocable</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
             <typeName>T__record</typeName>

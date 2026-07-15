@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>NPC Grantmaking Budget</label>
+    <protected>false</protected>
+    <values>
+        <field>FlowToolKit__Budget_Source_Object__c</field>
+        <value xsi:type="xsd:string">Budget</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Name_Field__c</field>
+        <value xsi:type="xsd:string">Budget.Name</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Amount_Field__c</field>
+        <value xsi:type="xsd:string">Budget.Amount</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Object__c</field>
+        <value xsi:type="xsd:string">BudgetCategory</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Name_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.Name</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Sort_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.SequenceNumber</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Budget_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.BudgetId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Object__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Name_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.Name</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Sort_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.SequenceNumber</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Start_Date_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.PeriodStartDate</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_End_Date_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.PeriodEndDate</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Budget_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.BudgetId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Object__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Amount_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.Amount</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Name_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.Comments</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Grouping_Identifier_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%Grouping_Identifier__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Category_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.BudgetCategoryId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Period_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.BudgetDivisionId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Fixed_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%Fixed__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Max_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Maximum_Funding_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Percentage_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Maximum_Percentage__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Max_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.%%%NAMESPACED_ORG%%%Maximum_Funding_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Start_Date_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Start_Date__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_End_Date_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%End_Date__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Description_Field__c</field>
+        <value xsi:type="xsd:string">Budget.Description</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Min_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Minimum_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Max_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Maximum_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Requested_Amount_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Requested_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Read_Only_Field__c</field>
+        <value xsi:type="xsd:string">Budget.IsSubmitted</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Edit_Budget_Form_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Budget_FormQualifiedApiName__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Edit_Category_Form_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Category_FormQualifiedApiName__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Edit_Period_Form_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Period_FormQualifiedApiName__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Edit_Value_Form_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Value_FormQualifiedApiName__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Description_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.Description</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Icon_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Icon__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Line_Item_Mode_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Line_Item_Mode__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Description_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.%%%NAMESPACED_ORG%%%Description__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Min_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Minimum_Funding_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Min_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.%%%NAMESPACED_ORG%%%Minimum_Funding_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Percentage_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.%%%NAMESPACED_ORG%%%Maximum_Percentage__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Mode_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.Mode__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Min_Quantity_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.Minimum_Quantity__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Max_Quantity_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.Maximum_Quantity__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Quantity_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.Quantity</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Percent_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.Percent__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Actual_Amount_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.ActualAmount</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Actual_Quantity_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.ActualQuantity</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Actual_Percent_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.ActualPercent__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Period_Submitted_Field__c</field>
+        <value xsi:type="xsd:string">BudgetPeriod.IsSubmitted</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Default_Budget_Form__c</field>
+        <value xsi:type="xsd:string">Budget_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Default_Category_Form__c</field>
+        <value xsi:type="xsd:string">Category_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Default_Period_Form__c</field>
+        <value xsi:type="xsd:string">Period_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Default_Value_Form__c</field>
+        <value xsi:type="xsd:string">Value_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Variance_Threshold_Field__c</field>
+        <value xsi:type="xsd:string">Budget.Variance_Threshold__c</value>
+    </values>
+</CustomMetadata>

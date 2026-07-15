@@ -49,6 +49,7 @@ flows:
                 task: deploy
                 options:
                     path: unpackaged/config/npc
+                    namespace_inject: FlowToolKit
                 ui_options:
                     name: "Deploy NPC grantmaking config (unpackaged)"
             # Unpackaged permission sets deploy in 4.1, AFTER the step-3 assignment pass
@@ -106,6 +107,7 @@ flows:
                 task: deploy
                 options:
                     path: unpackaged/config/ofm
+                    namespace_inject: FlowToolKit
                 ui_options:
                     name: "Deploy Outbound Funds budget config (unpackaged)"
             4.2:

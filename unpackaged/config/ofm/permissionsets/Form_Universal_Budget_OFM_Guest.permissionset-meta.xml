@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <label>Form (Universal Budget OFM Guest)</label>
-    <description>Guest-safe, read-only access to the Outbound Funds budget tree for public sites (guest users may hold only Read/Create). Record visibility additionally requires a guest sharing rule on Budget only - categories, periods, and values are master-detail children controlled by the parent.</description>
+    <description>Guest-safe, read-only access to the Outbound Funds budget tree for public sites. Record visibility additionally requires one guest sharing rule on Budget - the children are master-detail and follow the parent.</description>
     <hasActivationRequired>false</hasActivationRequired>
     <fieldPermissions>
         <field>Budget__c.Description__c</field>
@@ -55,11 +55,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <field>Budget__c.Value_FormQualifiedApiName__c</field>
-        <readable>true</readable>
-        <editable>false</editable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <field>Budget_Category__c.Budget__c</field>
         <readable>true</readable>
         <editable>false</editable>
     </fieldPermissions>
@@ -124,11 +119,6 @@
         <editable>false</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget_Period__c.Budget__c</field>
-        <readable>true</readable>
-        <editable>false</editable>
-    </fieldPermissions>
-    <fieldPermissions>
         <field>Budget_Period__c.Sequence__c</field>
         <readable>true</readable>
         <editable>false</editable>
@@ -165,11 +155,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <field>Budget_Period__c.Submitted__c</field>
-        <readable>true</readable>
-        <editable>false</editable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <field>Budget_Value__c.Category__c</field>
         <readable>true</readable>
         <editable>false</editable>
     </fieldPermissions>

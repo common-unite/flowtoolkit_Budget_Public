@@ -5,19 +5,19 @@
         <label>Budget Trigger Handler</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>BudgetTriggerHandler_Invocable</actionName>
+        <actionName>FlowToolKit__BudgetTriggerHandler_Invocable</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
             <typeName>T__record</typeName>
-            <typeValue>FlowToolKit__Budget_Value__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Value__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>T__priorRecord</typeName>
-            <typeValue>FlowToolKit__Budget_Value__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Value__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__record</typeName>
-            <typeValue>FlowToolKit__Budget_Value__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Value__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -58,10 +58,10 @@
             <targetReference>Budget_Trigger_Handler</targetReference>
         </connector>
         <filterFormula>AND(
-  ISCHANGED({!$Record.FlowToolKit__Comments__c}),
-  NOT(ISBLANK({!$Record.FlowToolKit__Grouping_Identifier__c}))
+  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Comments__c}),
+  NOT(ISBLANK({!$Record.%%%NAMESPACED_ORG%%%Grouping_Identifier__c}))
 )</filterFormula>
-        <object>FlowToolKit__Budget_Value__c</object>
+        <object>%%%NAMESPACED_ORG%%%Budget_Value__c</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>

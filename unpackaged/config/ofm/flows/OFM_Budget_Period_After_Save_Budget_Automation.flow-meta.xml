@@ -5,19 +5,19 @@
         <label>Budget Trigger Handler</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>BudgetTriggerHandler_Invocable</actionName>
+        <actionName>FlowToolKit__BudgetTriggerHandler_Invocable</actionName>
         <actionType>apex</actionType>
         <dataTypeMappings>
             <typeName>T__record</typeName>
-            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Period__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>T__priorRecord</typeName>
-            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Period__c</typeValue>
         </dataTypeMappings>
         <dataTypeMappings>
             <typeName>U__record</typeName>
-            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget_Period__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -59,9 +59,9 @@
         </connector>
         <filterFormula>OR(
   ISNEW(),
-  ISCHANGED({!$Record.FlowToolKit__Sequence__c})
+  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Sequence__c})
 )</filterFormula>
-        <object>FlowToolKit__Budget_Period__c</object>
+        <object>%%%NAMESPACED_ORG%%%Budget_Period__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Minimum Amount</label>
+    <protected>false</protected>
+    <values>
+        <field>FlowToolKit__Alternative_Field__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__Alternative_Object__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__Delete__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Form_Section__c</field>
+        <value xsi:type="xsd:string">Budget_FSbh570odj33h06o45IA4</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Form__c</field>
+        <value xsi:type="xsd:string">Budget_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Object__c</field>
+        <value xsi:type="xsd:string">Budget</value>
+    </values>
+    <values>
+        <field>FlowToolKit__addressFieldType__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__columnClassFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__columnIconNameFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__columnUrlLabelOverrideFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__conditionalLogic__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__config__c</field>
+        <value xsi:type="xsd:string">{
+  &quot;attributes&quot; : {
+    &quot;type&quot; : &quot;FlowToolKit__Form_Component_Field__c&quot;
+  },
+  &quot;FlowToolKit__Form_Section__c&quot; : &quot;%%%NAMESPACED_ORG%%%Budget_FSbh570odj33h06o45IA4&quot;,
+  &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Budget_Edit&quot;,
+  &quot;FlowToolKit__Object__c&quot; : &quot;Budget&quot;,
+  &quot;FlowToolKit__fieldName__c&quot; : &quot;%%%NAMESPACED_ORG%%%Minimum_Amount__c&quot;,
+  &quot;FlowToolKit__maxDateFieldName__c&quot; : &quot;%%%NAMESPACED_ORG%%%Maximum_Amount__c&quot;,
+  &quot;FlowToolKit__maxDateType__c&quot; : &quot;fieldValue&quot;,
+  &quot;FlowToolKit__min__c&quot; : &quot;0&quot;,
+  &quot;FlowToolKit__placeholder__c&quot; : &quot;$0.00&quot;,
+  &quot;FlowToolKit__position__c&quot; : 1.0,
+  &quot;FlowToolKit__readOnly__c&quot; : false,
+  &quot;FlowToolKit__required__c&quot; : false,
+  &quot;FlowToolKit__widthLarge__c&quot; : &quot;6&quot;,
+  &quot;FlowToolKit__widthMedium__c&quot; : &quot;6&quot;,
+  &quot;FlowToolKit__widthSmall__c&quot; : &quot;12&quot;
+}</value>
+    </values>
+    <values>
+        <field>FlowToolKit__fieldName__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Minimum_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__maxDateFieldName__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Maximum_Amount__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__minDateFieldName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__position__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>FlowToolKit__readOnly__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>FlowToolKit__referenceFormComponent__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FlowToolKit__required__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>

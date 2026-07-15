@@ -42,16 +42,21 @@ Any other data model works the same way: map your objects and fields on a
 ## Install
 
 1. **Managed package**: install the latest release (see this repo's Releases).
-2. **Demo/config bundle** (optional): deploy the bundle for your data model,
-   e.g. `sf project deploy start --source-dir unpackaged/config/npc`.
+2. **Demo/config bundle** (optional): deploy the bundle for your data model
+   **with CumulusCI**, which resolves the namespace tokens for your org type:
+
+   ```bash
+   cci task run deploy --org <your-org> -o path unpackaged/config/npc -o namespace_inject FlowToolKit
+   ```
+
    The bundles ship the configuration record, demo fields, edit forms,
    permission sets, and (OFM) the full custom budget tree with automation flows.
 
-> Note: the config bundles are currently authored for the namespaced demo orgs
-> used in development - field references inside the Budget Configuration records
-> carry the `FlowToolKit__` prefix. Deploying them unchanged into a subscriber
-> org requires adjusting those references to the bare API names, or wait for the
-> MetaDeploy install plans. Contact Common-Unite if you want help standing one up.
+> The bundles are namespace-tokenized: local references use CumulusCI's
+> `%%%NAMESPACED_ORG%%%` token, so identical files deploy with bare API names
+> into subscriber orgs and prefixed names into namespaced dev orgs. A plain
+> `sf project deploy` will NOT resolve the tokens - use the CumulusCI deploy
+> task as shown, or a MetaDeploy plan.
 
 ## Permission sets
 

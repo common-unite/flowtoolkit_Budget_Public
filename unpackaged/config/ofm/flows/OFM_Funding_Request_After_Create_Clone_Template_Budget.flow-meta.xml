@@ -5,20 +5,20 @@
         <label>Clone Template Budget</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <actionName>BudgetClone_Invocable</actionName>
+        <actionName>FlowToolKit__BudgetClone_Invocable</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>Clone_Succeeded</targetReference>
         </connector>
         <dataTypeMappings>
             <typeName>U__record</typeName>
-            <typeValue>FlowToolKit__Budget__c</typeValue>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget__c</typeValue>
         </dataTypeMappings>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>budgetTemplateId</name>
             <value>
-                <elementReference>$Record.outfunds__FundingProgram__r.FlowToolKit__Budget_Template__c</elementReference>
+                <elementReference>$Record.outfunds__FundingProgram__r.%%%NAMESPACED_ORG%%%Budget_Template__c</elementReference>
             </value>
         </inputParameters>
         <outputParameters>
@@ -76,7 +76,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <inputAssignments>
-            <field>FlowToolKit__Budget__c</field>
+            <field>%%%NAMESPACED_ORG%%%Budget__c</field>
             <value>
                 <elementReference>clonedBudget.Id</elementReference>
             </value>
@@ -90,8 +90,8 @@
             <targetReference>Clone_Template_Budget</targetReference>
         </connector>
         <filterFormula>AND(
-  ISBLANK({!$Record.FlowToolKit__Budget__c}),
-  NOT(ISBLANK({!$Record.outfunds__FundingProgram__r.FlowToolKit__Budget_Template__c}))
+  ISBLANK({!$Record.%%%NAMESPACED_ORG%%%Budget__c}),
+  NOT(ISBLANK({!$Record.outfunds__FundingProgram__r.%%%NAMESPACED_ORG%%%Budget_Template__c}))
 )</filterFormula>
         <object>outfunds__Funding_Request__c</object>
         <recordTriggerType>Create</recordTriggerType>
@@ -111,6 +111,6 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>FlowToolKit__Budget__c</objectType>
+        <objectType>%%%NAMESPACED_ORG%%%Budget__c</objectType>
     </variables>
 </Flow>
