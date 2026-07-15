@@ -41,7 +41,10 @@ Any other data model works the same way: map your objects and fields on a
 
 ## Install
 
-1. **Managed package**: install the latest release (see this repo's Releases).
+1. **Managed package**: install the current release (**0.1.0.1**):
+   - Sandbox & scratch orgs: <https://test.salesforce.com/packaging/installPackage.apexp?p0=04tRQ0000009vqHYAQ>
+   - Production & Developer Edition: <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tRQ0000009vqHYAQ>
+   - Always current: [latest release](https://github.com/common-unite/flowtoolkit_Budget_Public/releases/latest)
 2. **Demo/config bundle** (optional): deploy the bundle for your data model
    **with CumulusCI**, which resolves the namespace tokens for your org type:
 
