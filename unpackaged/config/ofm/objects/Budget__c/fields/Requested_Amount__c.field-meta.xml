@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requested_Amount__c</fullName>
+    <label>Requested Amount</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <defaultValue>0</defaultValue>
+    <precision>18</precision>
+    <scale>2</scale>
+    <type>Currency</type>
+    <description>The total being requested; the Universal Budget grid shows it as the Requested header metric and reconciles the grid total against it.</description>
+    <inlineHelpText>The amount requested. The grid tracks allocation against this figure.</inlineHelpText>
+</CustomField>

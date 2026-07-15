@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minimum_Quantity__c</fullName>
+    <defaultValue>0</defaultValue>
+    <label>Minimum Quantity</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <description>Advisory minimum total count across all periods for a Quantity-mode category. The Universal Budget grid flags the category while under; saving is never blocked. 0 means no minimum.</description>
+    <inlineHelpText>Minimum total count this category should reach across all periods (Quantity mode). Leave 0 for no minimum.</inlineHelpText>
+</CustomField>

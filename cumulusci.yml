@@ -1,0 +1,218 @@
+minimum_cumulusci_version: '4.8.1'
+project:
+    name: flowtoolkit_Budget
+    package:
+        name: 'Flow Tool Kit: Universal Budget'
+        namespace: FlowToolKit
+        api_version: '66.0'
+    dependencies:
+        - github: 'https://github.com/common-unite/Flow_Tool_Kit_Public'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+flows:
+    # ── Install flows: everything a working org needs, no demo-org extras ──────
+    # NPC/Grantmaking flavor. Requires a Grantmaking-enabled org (orgs/npc.json
+    # shape for scratch orgs):  cci flow run install_npc --org npc
+    install_npc:
+        description: "Install the Universal Budget for NPC Grantmaking: latest managed Flow Tool Kit release, Grantmaking permission set licenses + permission sets, Flow Tool Kit: Budget source, the NPC budget config bundle (Budget Configuration record, demo fields, forms), permission sets, and demo seed data."
+        group: "Flow Tool Kit: Universal Budget"
+        steps:
+            # Latest managed Flow Tool Kit release (+ its dependencies)
+            1:
+                flow: dependencies
+            # Grantmaking permission set license + permission set - the budget demo
+            # touches only Grantmaking objects; the broader NPC stack (OmniStudio,
+            # Fundraising, Program Management, ...) is deliberately NOT assigned
+            2:
+                task: assign_permission_set_licenses
+                options:
+                    api_names: GrantmakingPsl
+                ignore_failure: True
+            3:
+                task: assign_permission_sets
+                options:
+                    api_names: GrantmakingManager
+                ignore_failure: True
+            # Deploy this package's own source on top of the managed base
+            4:
+                task: deploy
+                options:
+                    path: force-app
+                ui_options:
+                    name: "Deploy Flow Tool Kit: Budget source"
+            # NPC-only, NOT packaged: grantmaking demo custom fields (caps/locks),
+            # the Budget Configuration CMDT record for the standard NPC budget data
+            # model, and the four Edit forms. Depends on the CMDT type (step 4).
+            4.1:
+                task: deploy
+                options:
+                    path: unpackaged/config/npc
+                ui_options:
+                    name: "Deploy NPC grantmaking config (unpackaged)"
+            # Unpackaged permission sets deploy in 4.1, AFTER the step-3 assignment pass
+            4.2:
+                task: assign_permission_sets
+                options:
+                    api_names: Form_Universal_Budget_NPC,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
+            # Demo budget seed data (idempotent, reruns safely)
+            4.3:
+                task: execute_anon
+                options:
+                    path: scripts/seed_npc_budget.apex
+                ui_options:
+                    name: "Seed NPC demo budget data"
+
+    # Outbound Funds flavor. NPSP and Outbound Funds (Core) are installed as flow
+    # steps for demo realism - deliberately NOT project dependencies; the Budget
+    # package must never require them. Works on the lean org shape (orgs/dev.json):
+    #   cci flow run install_ofm --org ofm
+    install_ofm:
+        description: "Install the Universal Budget for Outbound Funds: latest managed Flow Tool Kit release, NPSP + Outbound Funds (Core) as demo-time installs (not package dependencies), Flow Tool Kit: Budget source, the OFM budget tree bundle (Budget container object, categories/periods/values, clone + automation flows, forms), permission sets, and demo seed data."
+        group: "Flow Tool Kit: Universal Budget"
+        steps:
+            # Latest managed Flow Tool Kit release (+ its dependencies)
+            1:
+                flow: dependencies
+            # NPSP stack - demo-time install, NOT a package dependency
+            2:
+                task: update_dependencies
+                options:
+                    dependencies:
+                        - github: 'https://github.com/SalesforceFoundation/NPSP'
+                ui_options:
+                    name: "Install NPSP (demo-time, not a dependency)"
+            # Outbound Funds (Core) - demo-time install, NOT a package dependency
+            3:
+                task: update_dependencies
+                options:
+                    dependencies:
+                        - github: 'https://github.com/SalesforceFoundation/OutboundFundsModule'
+                ui_options:
+                    name: "Install Outbound Funds Core (demo-time, not a dependency)"
+            # Deploy this package's own source on top of the managed base
+            4:
+                task: deploy
+                options:
+                    path: force-app
+                ui_options:
+                    name: "Deploy Flow Tool Kit: Budget source"
+            # OFM-only, NOT packaged: the custom budget tree (Budget__c container +
+            # Budget_Category__c/Budget_Period__c/Budget_Value__c), lookups on
+            # Funding Request/Program, Budget Configuration record, clone +
+            # automation flows, the four OFM Edit forms, and the record page.
+            4.1:
+                task: deploy
+                options:
+                    path: unpackaged/config/ofm
+                ui_options:
+                    name: "Deploy Outbound Funds budget config (unpackaged)"
+            4.2:
+                task: assign_permission_sets
+                options:
+                    api_names: Form_Universal_Budget_OFM,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
+            # Demo dataset (idempotent; re-exercises the clone flow on every run)
+            4.3:
+                task: execute_anon
+                options:
+                    path: scripts/seed_ofm_budget.apex
+                ui_options:
+                    name: "Seed Outbound Funds demo data"
+
+    # ── Dev-org flows: install flow + (npc) the EC portal ──────────────────────
+    #   cci flow run npc_dev_org --org npc
+    npc_dev_org:
+        description: "Grantmaking demo org: install_npc plus the Grantmaking Experience Cloud portal for EC testing. Requires the Grantmaking org shape (orgs/npc.json)."
+        group: "Flow Tool Kit: Universal Budget"
+        steps:
+            1:
+                flow: install_npc
+            # Grantmaking Experience Cloud portal (for testing the component in EC)
+            2:
+                task: create_community
+                options:
+                    template: Grantmaking
+                    name: Grantmaking Portal
+                    url_path_prefix: grantmaking
+                ignore_failure: True
+            3:
+                task: publish_community
+                options:
+                    name: Grantmaking Portal
+                ignore_failure: True
+
+    #   cci flow run ofm_dev_org --org ofm
+    ofm_dev_org:
+        description: "Outbound Funds demo org: alias of install_ofm. Works on the lean org shape (orgs/dev.json)."
+        group: "Flow Tool Kit: Universal Budget"
+        steps:
+            1:
+                flow: install_ofm
+
+    # Release flows: copy the release + public files to the companion repo
+    release_2gp_beta:
+        steps:
+            90:
+                task: github_copy_subtree
+                options:
+                    tag_name: "latest_beta"
+
+    release_2gp_production:
+        steps:
+            90:
+                task: github_copy_subtree
+                options:
+                    tag_name: "latest"
+
+tasks:
+    export_form:
+        class_path: cci_flowtoolkit_tasks.export_form.ExportFormMetadata
+
+    # Mirrors public-facing files (docs, project config, the unpackaged config
+    # bundles, seed scripts) to the companion public repo so clients can browse
+    # documentation, deploy the demo config, see releases, and file issues
+    # without access to this private source repo. force-app is NEVER included.
+    github_copy_subtree:
+        options:
+            repo_url: "https://github.com/common-unite/flowtoolkit_Budget_Public"
+            branch: "main"
+            create_release: true
+            release_body: true
+            include: [ "cumulusci.yml","sfdx-project.json","orgs/","README.md","unpackaged/","scripts/" ]
+
+    robot:
+        options:
+            suites: robot/flowtoolkit_Budget/tests
+            options:
+                outputdir: robot/flowtoolkit_Budget/results
+
+    robot_testdoc:
+        options:
+            path: robot/flowtoolkit_Budget/tests
+            output: robot/flowtoolkit_Budget/doc/flowtoolkit_Budget_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+orgs:
+    scratch:
+        # Lean, fast org: installs the managed Flow Tool Kit dependency + Budget source.
+        # cci flow run dev_org --org dev
+        dev:
+            config_file: orgs/dev.json
+            days: 7
+            namespaced: True
+        # Grantmaking-enabled org for the NPC budget demo + Experience Cloud testing.
+        # cci flow run npc_dev_org --org npc
+        npc:
+            config_file: orgs/npc.json
+            days: 30
+            namespaced: True
+        # Lean org for the Outbound Funds demo (NPSP + OFM install as flow steps).
+        # cci flow run ofm_dev_org --org ofm
+        ofm:
+            config_file: orgs/dev.json
+            days: 30
+            namespaced: True

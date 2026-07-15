@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Template__c</fullName>
+    <label>Budget Template</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <referenceTo>Budget__c</referenceTo>
+    <relationshipLabel>Template Funding Programs</relationshipLabel>
+    <relationshipName>Template_Funding_Programs</relationshipName>
+    <type>Lookup</type>
+    <description>Template budget cloned onto every new Funding Request in this program (mirror of NPC's FundingOpportunity.BudgetTemplateId).</description>
+    <inlineHelpText>The budget template new requests in this program start from.</inlineHelpText>
+</CustomField>

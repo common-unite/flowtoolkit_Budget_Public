@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Budget_Trigger_Handler</name>
+        <label>Budget Trigger Handler</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>BudgetTriggerHandler_Invocable</actionName>
+        <actionType>apex</actionType>
+        <dataTypeMappings>
+            <typeName>T__record</typeName>
+            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>T__priorRecord</typeName>
+            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
+            <typeName>U__record</typeName>
+            <typeValue>FlowToolKit__Budget_Period__c</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>record</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>priorRecord</name>
+            <value>
+                <elementReference>$Record__Prior</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>66.0</apiVersion>
+    <description>When an OFM Budget Period is created or its Sequence changes, routes the change through the Flow Tool Kit Budget Trigger Handler: new periods graduate the budget's category-only (periodless) values onto the first period, and every period in the budget is renumbered to a gapless 1..N. The entry filter is an efficiency gate only - the handler detects changes itself.</description>
+    <environments>Default</environments>
+    <interviewLabel>OFM Budget Period (After Save → Budget Automation) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>OFM Budget Period (After Save → Budget Automation)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Budget_Trigger_Handler</targetReference>
+        </connector>
+        <filterFormula>OR(
+  ISNEW(),
+  ISCHANGED({!$Record.FlowToolKit__Sequence__c})
+)</filterFormula>
+        <object>FlowToolKit__Budget_Period__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

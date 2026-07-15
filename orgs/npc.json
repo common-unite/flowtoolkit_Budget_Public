@@ -1,0 +1,89 @@
+{
+  "orgName": "Flow Tool Kit: Budget - NPC Dev Org",
+  "edition": "Developer",
+  "adminEmail": "bobby@common-unite.com",
+  "hasSampleData": false,
+  "features": [
+    "PlatformCache",
+    "ProviderFreePlatformCache",
+    "ArcGraphCommunity",
+    "Assessments",
+    "BusinessRulesEngine",
+    "Communities",
+    "ContactsToMultipleAccounts",
+    "DataProcessingEngine",
+    "DecisionTable",
+    "DefaultWorkflowUser",
+    "DocGenInd",
+    "DocumentChecklist",
+    "EnableSetPasswordInApi",
+    "Fundraising",
+    "Grantmaking",
+    "IndustriesActionPlan",
+    "MarketingUser",
+    "NonprofitCloudCaseManagementUser",
+    "OmnistudioDesigner",
+    "OmnistudioRuntime",
+    "OutcomeManagement",
+    "PersonAccounts",
+    "ProgramManagement",
+    "StateAndCountryPicklist"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "apexSettings": {
+      "enableDisableParallelApexTesting": true
+    },
+    "userManagementSettings": {
+      "enableNewProfileUI": true,
+      "userAccessPoliciesEnabled": true
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false
+      }
+    },
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true
+    },
+    "flowSettings": {
+      "enableFlowPauseEnabled": true
+    },
+    "industriesSettings": {
+      "enableBenefitManagementPreference": true,
+      "enableBenefitAndGoalSharingPref": true,
+      "enableCarePlansPreference": true,
+      "enableGrantmaking": true,
+      "enableGroupMembershipPref": true,
+      "enableOutcomes": true
+    },
+    "communitiesSettings": {
+      "enableCommunityWorkspaces": true,
+      "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    },
+    "nameSettings": {
+      "enableMiddleName": true,
+      "enableNameSuffix": true
+    }
+  },
+  "objectSettings": {
+    "contact": {
+      "defaultRecordType": "default"
+    },
+    "account": {
+      "defaultRecordType": "default"
+    }
+  }
+}

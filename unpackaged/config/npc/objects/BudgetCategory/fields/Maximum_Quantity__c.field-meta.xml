@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Maximum_Quantity__c</fullName>
+    <defaultValue>0</defaultValue>
+    <label>Maximum Quantity</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <description>Advisory maximum total count across all periods for a Quantity-mode category. The Universal Budget grid flags the category when over; saving is never blocked. 0 means no limit.</description>
+    <inlineHelpText>Maximum total count this category may reach across all periods (Quantity mode). Leave 0 for no limit.</inlineHelpText>
+</CustomField>

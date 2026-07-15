@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grouping_Identifier__c</fullName>
+    <label>Grouping Identifier</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <length>255</length>
+    <type>Text</type>
+    <description>Correlates the values of one line-item row across periods; the Universal Budget grid generates and maintains it for line-item categories.</description>
+    <inlineHelpText>Managed by the budget grid to keep one line item's cells together across periods.</inlineHelpText>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Date__c</fullName>
+    <label>Start Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+    <description>First date this category is active; the Universal Budget grid shows the range as an informational row in the category details.</description>
+    <inlineHelpText>When this category becomes active.</inlineHelpText>
+</CustomField>

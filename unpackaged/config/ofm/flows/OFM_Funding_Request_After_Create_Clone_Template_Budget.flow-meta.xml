@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Clone_Template_Budget</name>
+        <label>Clone Template Budget</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>BudgetClone_Invocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Clone_Succeeded</targetReference>
+        </connector>
+        <dataTypeMappings>
+            <typeName>U__record</typeName>
+            <typeValue>FlowToolKit__Budget__c</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>budgetTemplateId</name>
+            <value>
+                <elementReference>$Record.outfunds__FundingProgram__r.FlowToolKit__Budget_Template__c</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>clonedBudget</assignToReference>
+            <name>record</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>cloneSucceeded</assignToReference>
+            <name>isSuccess</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>66.0</apiVersion>
+    <description>When a Funding Request is created for a Funding Program that carries a budget template, clones the template (budget, categories, periods, and values) through the Flow Tool Kit Clone Budget action and stamps the new budget on the request. Requests created with a budget already set, or for programs without a template, are skipped. A clone failure never blocks the request - the action returns Is Success false and the flow simply skips the stamp.</description>
+    <environments>Default</environments>
+    <interviewLabel>OFM Funding Request (After Create → Clone Template Budget) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>OFM Funding Request (After Create → Clone Template Budget)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <decisions>
+        <name>Clone_Succeeded</name>
+        <label>Clone Succeeded?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Clone failed - request saves without a budget</defaultConnectorLabel>
+        <rules>
+            <name>Clone_Committed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>cloneSucceeded</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Stamp_Cloned_Budget</targetReference>
+            </connector>
+            <label>Clone committed</label>
+        </rules>
+    </decisions>
+    <recordUpdates>
+        <name>Stamp_Cloned_Budget</name>
+        <label>Stamp Cloned Budget</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>FlowToolKit__Budget__c</field>
+            <value>
+                <elementReference>clonedBudget.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Clone_Template_Budget</targetReference>
+        </connector>
+        <filterFormula>AND(
+  ISBLANK({!$Record.FlowToolKit__Budget__c}),
+  NOT(ISBLANK({!$Record.outfunds__FundingProgram__r.FlowToolKit__Budget_Template__c}))
+)</filterFormula>
+        <object>outfunds__Funding_Request__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>cloneSucceeded</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>clonedBudget</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>FlowToolKit__Budget__c</objectType>
+    </variables>
+</Flow>

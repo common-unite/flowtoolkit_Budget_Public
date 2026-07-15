@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Variance_Threshold__c</fullName>
+    <label>Variance Threshold</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <description>Reporting-mode variance threshold percent for this budget. In the Universal Budget grid's reporting mode, line items whose actual-vs-budgeted variance reaches this percent of the budgeted value get an advisory flag. Blank or 0 uses the default of 10 percent.</description>
+    <inlineHelpText>Variance threshold percent for reporting (e.g. 10). Line items reaching this variance get an advisory flag. Leave blank for the default 10 percent.</inlineHelpText>
+</CustomField>

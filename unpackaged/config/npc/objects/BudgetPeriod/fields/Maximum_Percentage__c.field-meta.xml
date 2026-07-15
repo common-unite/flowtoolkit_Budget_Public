@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Maximum_Percentage__c</fullName>
+    <label>Maximum Percentage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+    <description>Maximum percentage of the total budget that may be allocated to this period.</description>
+    <inlineHelpText>Largest share of the total budget this period may hold, as a percentage. Leave 0 for no limit.</inlineHelpText>
+</CustomField>

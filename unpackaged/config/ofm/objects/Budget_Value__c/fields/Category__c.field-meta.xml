@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Budget Category</label>
+    <trackHistory>false</trackHistory>
+    <referenceTo>Budget_Category__c</referenceTo>
+    <relationshipLabel>Budget Values</relationshipLabel>
+    <relationshipName>Budget_Values</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    <type>MasterDetail</type>
+    <description>Row this value belongs to in the Universal Budget grid.</description>
+    <inlineHelpText>The budget category this value belongs to.</inlineHelpText>
+</CustomField>

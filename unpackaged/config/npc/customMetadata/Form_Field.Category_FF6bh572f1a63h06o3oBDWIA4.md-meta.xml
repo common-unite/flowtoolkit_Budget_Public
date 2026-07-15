@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sequence Number</label>
+    <protected>false</protected>
+    <values>
+        <field>Alternative_Field__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Alternative_Object__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Delete__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Form_Section__c</field>
+        <value xsi:type="xsd:string">Category_FSbh572d0k23h06o3lDWIA4</value>
+    </values>
+    <values>
+        <field>Form__c</field>
+        <value xsi:type="xsd:string">Category_Edit</value>
+    </values>
+    <values>
+        <field>Object__c</field>
+        <value xsi:type="xsd:string">BudgetCategory</value>
+    </values>
+    <values>
+        <field>addressFieldType__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>columnClassFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>columnIconNameFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>columnUrlLabelOverrideFieldReference__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>conditionalLogic__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>config__c</field>
+        <value xsi:type="xsd:string">{
+  &quot;attributes&quot; : {
+    &quot;type&quot; : &quot;FlowToolKit__Form_Component_Field__c&quot;
+  },
+  &quot;FlowToolKit__Form_Section__c&quot; : &quot;FlowToolKit__Category_FSbh572d0k23h06o3lDWIA4&quot;,
+  &quot;FlowToolKit__Form__c&quot; : &quot;FlowToolKit__Category_Edit&quot;,
+  &quot;FlowToolKit__Object__c&quot; : &quot;BudgetCategory&quot;,
+  &quot;FlowToolKit__fieldName__c&quot; : &quot;SequenceNumber&quot;,
+  &quot;FlowToolKit__max__c&quot; : &quot;100&quot;,
+  &quot;FlowToolKit__min__c&quot; : &quot;0&quot;,
+  &quot;FlowToolKit__numberType__c&quot; : &quot;stepper&quot;,
+  &quot;FlowToolKit__position__c&quot; : 6.0,
+  &quot;FlowToolKit__readOnly__c&quot; : false,
+  &quot;FlowToolKit__required__c&quot; : false,
+  &quot;FlowToolKit__step__c&quot; : &quot;1&quot;,
+  &quot;FlowToolKit__widthLarge__c&quot; : &quot;4&quot;,
+  &quot;FlowToolKit__widthMedium__c&quot; : &quot;4&quot;,
+  &quot;FlowToolKit__widthSmall__c&quot; : &quot;12&quot;
+}</value>
+    </values>
+    <values>
+        <field>fieldName__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.SequenceNumber</value>
+    </values>
+    <values>
+        <field>maxDateFieldName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>minDateFieldName__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>position__c</field>
+        <value xsi:type="xsd:double">6.0</value>
+    </values>
+    <values>
+        <field>readOnly__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>referenceFormComponent__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>required__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+</CustomMetadata>

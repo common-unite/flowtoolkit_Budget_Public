@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period__c</fullName>
+    <label>Budget Period</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <referenceTo>Budget_Period__c</referenceTo>
+    <relationshipLabel>Budget Values</relationshipLabel>
+    <relationshipName>Budget_Values</relationshipName>
+    <type>Lookup</type>
+    <description>Column this value belongs to in the Universal Budget grid; blank on periodless budgets.</description>
+    <inlineHelpText>The budget period this value belongs to. Blank when the budget has no periods yet.</inlineHelpText>
+</CustomField>

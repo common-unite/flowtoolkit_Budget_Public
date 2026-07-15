@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fixed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When true, this line item is locked - it cannot be edited, deleted, or cloned by any user in the budget matrix UI. Used for pre-allocated or system-generated budget entries.</description>
+    <label>Fixed</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <inlineHelpText>Locks this amount from inline editing in the budget grid.</inlineHelpText>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Maximum_Percentage__c</fullName>
+    <label>Maximum Percentage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <precision>18</precision>
+    <scale>2</scale>
+    <type>Percent</type>
+    <description>Cap on this category's share of the total budget; the Universal Budget grid flags the category when exceeded. 0 means no limit.</description>
+    <inlineHelpText>Largest allowed share of the total budget. 0 = no limit.</inlineHelpText>
+</CustomField>

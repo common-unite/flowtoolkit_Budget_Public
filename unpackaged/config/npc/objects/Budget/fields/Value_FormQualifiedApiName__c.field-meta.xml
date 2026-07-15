@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Value_FormQualifiedApiName__c</fullName>
+    <defaultValue>'FlowToolKit__Value_Edit'</defaultValue>
+    <label>Value Form Qualified API Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <description>Qualified API name of the Flow Tool Kit form used to add or edit the value (cell) records from the Universal Budget grid. Blank hides those actions for this budget.</description>
+    <inlineHelpText>Qualified API name (e.g. FlowToolKit__Value_Edit) of the form used to edit individual amount records from the grid's cell pencil. Leave blank to hide it.</inlineHelpText>
+</CustomField>

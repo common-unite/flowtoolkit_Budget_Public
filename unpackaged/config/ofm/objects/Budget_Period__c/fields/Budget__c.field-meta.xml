@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget__c</fullName>
+    <label>Budget</label>
+    <trackHistory>false</trackHistory>
+    <referenceTo>Budget__c</referenceTo>
+    <relationshipLabel>Budget Periods</relationshipLabel>
+    <relationshipName>Budget_Periods</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    <type>MasterDetail</type>
+    <description>Parent budget this period belongs to; the Universal Budget grid renders one column per period.</description>
+    <inlineHelpText>The budget this period belongs to.</inlineHelpText>
+</CustomField>
