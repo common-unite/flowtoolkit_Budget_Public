@@ -47,7 +47,7 @@ In Lightning App Builder, drag **Universal Budget** onto a record page or tab.
 
 Open the record. Categories appear as rows, periods as columns, and every cell is editable. Staff with the Template Manager permission see **Edit budget**, **Edit category**, **Add category**, and **Add period** controls; everyone else sees a clean, read-only-structure grid they can still enter values into.
 
-![The grid rendered with categories, periods, and inline value cells](../screenshots/33-grid-first-view.png)
+<!-- image pending: 33-grid-first-view.png — The grid rendered with categories, periods, and inline value cells -->
 
 ## Where to next
 

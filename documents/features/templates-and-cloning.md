@@ -22,7 +22,7 @@ It works against whatever object model your configuration maps, so the same acti
 
 The action never throws into its caller. It returns **Is Success** and **Error Message** outputs instead, so a record-triggered flow that clones a budget as part of a larger transaction is never rolled back by a clone problem — the flow can branch on the result and carry on.
 
-![The Clone Budget action cloning a template onto a new request](../screenshots/33-clone-after-create-demo.gif)
+<!-- image pending: 33-clone-after-create-demo.gif — The Clone Budget action cloning a template onto a new request -->
 
 ## Auto-clone on create
 

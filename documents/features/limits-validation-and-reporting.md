@@ -20,7 +20,7 @@ As values change, the grid re-checks every limit:
 - One **approaching** a limit shows a yellow advisory with the remaining headroom (for example, "$1 left before the maximum").
 - The header shows a running count — **"N limits need attention"** — with a **Review issues** button.
 
-![A category over its maximum, with the advisory chip](../screenshots/33-advisory-chips.png)
+<!-- image pending: 33-advisory-chips.png — A category over its maximum, with the advisory chip -->
 
 **Review issues** opens a checklist of every current problem across the whole budget at once — the overall budget over its maximum and its requested amount, a category over its percentage cap, a period over its maximum — so an admin or grantee can see everything to fix in one place.
 
@@ -48,4 +48,4 @@ Point the component at a budget **period** record instead of the whole budget an
 
 When a period is marked submitted, its reporting grid becomes read-only — the component reads the mapped "submitted" flag and never writes it, so *how* a period gets submitted stays in your org's own workflow (a Flow, an approval, a button). Once submitted, actuals for that period are locked from further edits.
 
-![A submitted period, locked read-only](../screenshots/33-submitted-lock.png)
+<!-- image pending: 33-submitted-lock.png — A submitted period, locked read-only -->

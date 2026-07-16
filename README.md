@@ -6,6 +6,18 @@ categories as rows, periods as columns, line items, live limit validation, and a
 budget-vs-actuals reporting mode - against **any** data model an admin maps
 through a `Budget_Configuration__mdt` record.
 
+## Documentation
+
+Full documentation lives in **[`documents/`](documents/README.md)** — a
+[quickstart](documents/getting-started/quickstart.md), feature guides, the
+[configuration reference](documents/configuration/mapping-your-data-model.md),
+and integration notes, illustrated with screenshots and short demos.
+
+Try it live (public demo, no login):
+
+- [Editable budget grid](https://common-unite.my.site.com/s/budget/a0tRQ00000YpZ3PYAV/facility-expansion-budget-template) — change values and add line items as a guest.
+- [Reporting window](https://common-unite.my.site.com/s/budget/a0rRQ00000pF7dPYAS/year-2) — budgeted vs. actual vs. variance.
+
 ## What it does
 
 - **Compact and spreadsheet views** of a multi-period budget, with per-category

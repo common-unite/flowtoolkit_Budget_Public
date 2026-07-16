@@ -69,7 +69,7 @@ Not every budget is money. Each category can use one of three modes so the same 
 
 Modes mix freely within one budget: a program budget can have currency categories, a quantity category for units delivered, and a percent category for allocation, all at once.
 
-![A budget mixing currency, quantity, and percent categories](../screenshots/33-value-modes.png)
+<!-- image pending: 33-value-modes.png — A budget mixing currency, quantity, and percent categories -->
 
 ## Periods
 

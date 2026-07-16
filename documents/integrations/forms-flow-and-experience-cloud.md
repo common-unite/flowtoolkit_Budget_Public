@@ -30,7 +30,7 @@ Drop the component onto a **Flow screen** and it participates in the flow:
 
 Use the outputs to gate navigation — for example, keep a grantee on the budget screen until **Has Violations** is false, so an application can't be submitted over budget.
 
-![The Flow screen component with recordId input and violation outputs](../screenshots/33-flow-screen-props.png)
+<!-- image pending: 33-flow-screen-props.png — The Flow screen component with recordId input and violation outputs -->
 
 You can also set **brand** and **complementary** colors on the component to match your flow or site.
 
@@ -46,7 +46,7 @@ The component runs in Experience Cloud sites, so grantees can view and work thei
 
 On a **public (guest) page**, the grid becomes an interactive **preview**. A guest can change values and add, rename, clone, or delete line items, and the grid responds live — but nothing is written to the database. Salesforce never lets guest users update records, so rather than a dead read-only grid, a public visitor gets the real editing feel; edits simply reset on refresh.
 
-![The guest interactive preview on a public site](../screenshots/33-guest-preview-demo.gif)
+<!-- image pending: 33-guest-preview-demo.gif — The guest interactive preview on a public site -->
 
 > **Try it yourself:** [Facility Expansion Budget Template](https://common-unite.my.site.com/s/budget/a0tRQ00000YpZ3PYAV/facility-expansion-budget-template) — change values and add line items as a guest; your edits reset on refresh.
 
