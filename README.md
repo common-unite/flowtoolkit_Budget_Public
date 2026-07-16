@@ -6,6 +6,8 @@ categories as rows, periods as columns, line items, live limit validation, and a
 budget-vs-actuals reporting mode - against **any** data model an admin maps
 through a `Budget_Configuration__mdt` record.
 
+![The Universal Budget component — the same grid in compact and spreadsheet views](documents/screenshots/33-view-toggle-demo.gif)
+
 ## Documentation
 
 Full documentation lives in **[`documents/`](documents/README.md)** — a

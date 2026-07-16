@@ -10,7 +10,7 @@ The same component works on three kinds of data model out of the box:
 
 What makes it "universal" is a single `Budget_Configuration__mdt` record that tells the component which objects and fields are your budget, categories, periods, and values. Change the mapping, point it at a different data model, and the same grid renders.
 
-<!-- image pending: 33-grid-first-view.png — The Universal Budget grid on an Outbound Funds Funding Program -->
+![The Universal Budget component — the same grid in compact and spreadsheet views](screenshots/33-view-toggle-demo.gif)
 
 > **Try it live** — public demo, no login:
 > - [Facility Expansion Budget Template](https://common-unite.my.site.com/s/budget/a0tRQ00000YpZ3PYAV/facility-expansion-budget-template) — the editable grid as a guest preview (change values and add line items; edits reset on refresh).
