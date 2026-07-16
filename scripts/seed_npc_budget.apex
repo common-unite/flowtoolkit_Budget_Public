@@ -27,11 +27,7 @@ Budget budget = new Budget(
     %%%NAMESPACED_ORG%%%Minimum_Amount__c = 50000,
     %%%NAMESPACED_ORG%%%Maximum_Amount__c = 250000,
     %%%NAMESPACED_ORG%%%Requested_Amount__c = 240000,
-    %%%NAMESPACED_ORG%%%Variance_Threshold__c = 10,
-    %%%NAMESPACED_ORG%%%Budget_FormQualifiedApiName__c = '%%%NAMESPACED_ORG%%%Budget_Edit',
-    %%%NAMESPACED_ORG%%%Category_FormQualifiedApiName__c = '%%%NAMESPACED_ORG%%%Category_Edit',
-    %%%NAMESPACED_ORG%%%Period_FormQualifiedApiName__c = '%%%NAMESPACED_ORG%%%Period_Edit',
-    %%%NAMESPACED_ORG%%%Value_FormQualifiedApiName__c = '%%%NAMESPACED_ORG%%%Value_Edit'
+    %%%NAMESPACED_ORG%%%Variance_Threshold__c = 10
 );
 insert budget;
 

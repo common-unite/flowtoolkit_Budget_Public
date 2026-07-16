@@ -203,7 +203,7 @@ tasks:
             branch: "main"
             create_release: true
             release_body: true
-            include: [ "cumulusci.yml","sfdx-project.json","orgs/","README.md","unpackaged/","scripts/" ]
+            include: [ "cumulusci.yml","sfdx-project.json","orgs/","README.md","unpackaged/","scripts/","documents/" ]
 
     robot:
         options:
