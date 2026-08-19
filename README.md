@@ -55,15 +55,31 @@ Any other data model works the same way: map your objects and fields on a
 
 ## Install
 
-1. **Managed package**: install the current release (**0.3.0.1**):
-   - Sandbox & scratch orgs: <https://test.salesforce.com/packaging/installPackage.apexp?p0=04tRQ0000009wuPYAQ>
-   - Production & Developer Edition: <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tRQ0000009wuPYAQ>
+1. **Managed package**: install the current release (**0.4.0.1**):
+   - Sandbox & scratch orgs: <https://test.salesforce.com/packaging/installPackage.apexp?p0=04tRQ000000AQVtYAO>
+   - Production & Developer Edition: <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tRQ000000AQVtYAO>
    - Always current: [latest release](https://github.com/common-unite/flowtoolkit_Budget_Public/releases/latest)
 2. **Demo/config bundle** (optional): deploy the bundle for your data model
    **with CumulusCI**, which resolves the namespace tokens for your org type:
 
    ```bash
-   cci task run deploy --org <your-org> -o path unpackaged/config/npc -o namespace_inject FlowToolKit
+   # Namespaced dev/scratch org
+   cci task run deploy --org <your-org> -o path unpackaged/config/npc \
+     -o namespace_inject FlowToolKit -o unmanaged True
+
+   # Client (subscriber) org
+   cci task run deploy --org <your-org> -o path unpackaged/config/npc \
+     -o namespace_inject FlowToolKit -o unmanaged False
+   ```
+
+   `unmanaged` decides how the bundle's form-section wrapper addresses the
+   managed grid component: `True` renders `<c-universal-budget>` (required in a
+   namespaced org, where LWC1504 forbids naming your own namespace), `False`
+   renders `<FlowToolKit-universal-budget>` (required in a subscriber org). For
+   a client org, prefer the scripted path, which sets this for you:
+
+   ```bash
+   cci flow run install_npc_client --org <your-org>
    ```
 
    The bundles ship the configuration record, demo fields, edit forms,
