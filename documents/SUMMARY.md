@@ -5,6 +5,7 @@
 
 * [Installation](getting-started/installation.md)
 * [Quickstart](getting-started/quickstart.md)
+* [NPC Client Org Runbook](getting-started/npc-client-install.md)
 
 ## Features
 

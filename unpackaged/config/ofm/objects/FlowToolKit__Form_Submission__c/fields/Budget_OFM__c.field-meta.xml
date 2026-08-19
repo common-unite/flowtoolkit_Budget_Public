@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_OFM__c</fullName>
+    <label>Budget (Outbound Funds)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <referenceTo>Budget__c</referenceTo>
+    <relationshipLabel>Form Submissions</relationshipLabel>
+    <relationshipName>OFM_Submissions</relationshipName>
+    <type>Lookup</type>
+    <description>The Outbound Funds budget for this form submission; the Universal Budget form section renders it. The prefill flow clones the default template and stamps this lookup.</description>
+    <inlineHelpText>The Outbound Funds budget for this form submission.</inlineHelpText>
+</CustomField>

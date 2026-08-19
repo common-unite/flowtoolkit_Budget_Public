@@ -4,32 +4,32 @@
     <description>Full access for the NPC budget data model: build and maintain budgets, categories, periods, caps, and defaults. Pair with Form (Universal Budget Template Manager).</description>
     <hasActivationRequired>false</hasActivationRequired>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Mode__c</field>
+        <field>BudgetCategory.Mode__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Minimum_Quantity__c</field>
+        <field>BudgetCategory.Minimum_Quantity__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Maximum_Quantity__c</field>
+        <field>BudgetCategory.Maximum_Quantity__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategoryValue.FlowToolKit__Percent__c</field>
+        <field>BudgetCategoryValue.Percent__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Variance_Threshold__c</field>
+        <field>Budget.Variance_Threshold__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategoryValue.FlowToolKit__ActualPercent__c</field>
+        <field>BudgetCategoryValue.ActualPercent__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
@@ -44,102 +44,112 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Minimum_Amount__c</field>
+        <field>Budget.Minimum_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Maximum_Amount__c</field>
+        <field>Budget.Maximum_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Requested_Amount__c</field>
+        <field>Budget.Requested_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Budget_FormQualifiedApiName__c</field>
+        <field>Budget.Budget_FormQualifiedApiName__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Category_FormQualifiedApiName__c</field>
+        <field>Budget.Category_FormQualifiedApiName__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Period_FormQualifiedApiName__c</field>
+        <field>Budget.Period_FormQualifiedApiName__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.FlowToolKit__Value_FormQualifiedApiName__c</field>
+        <field>Budget.Value_FormQualifiedApiName__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Start_Date__c</field>
+        <field>BudgetCategory.Start_Date__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__End_Date__c</field>
+        <field>BudgetCategory.End_Date__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Maximum_Funding_Amount__c</field>
+        <field>BudgetCategory.Maximum_Funding_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Minimum_Funding_Amount__c</field>
+        <field>BudgetCategory.Minimum_Funding_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetPeriod.FlowToolKit__Minimum_Funding_Amount__c</field>
+        <field>BudgetPeriod.Minimum_Funding_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetPeriod.FlowToolKit__Maximum_Percentage__c</field>
+        <field>BudgetPeriod.Maximum_Percentage__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Maximum_Percentage__c</field>
+        <field>BudgetCategory.Maximum_Percentage__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Icon__c</field>
+        <field>BudgetCategory.Icon__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategory.FlowToolKit__Line_Item_Mode__c</field>
+        <field>BudgetCategory.Line_Item_Mode__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetPeriod.FlowToolKit__Description__c</field>
+        <field>BudgetPeriod.Description__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetPeriod.FlowToolKit__Maximum_Funding_Amount__c</field>
+        <field>BudgetPeriod.Maximum_Funding_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategoryValue.FlowToolKit__Fixed__c</field>
+        <field>BudgetCategoryValue.Fixed__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategoryValue.FlowToolKit__Grouping_Identifier__c</field>
+        <field>BudgetCategoryValue.Grouping_Identifier__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Account__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>FlowToolKit__Form_Submission__c.Budget_NPC__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>

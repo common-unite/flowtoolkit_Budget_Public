@@ -44,12 +44,26 @@ flows:
                     name: "Deploy Flow Tool Kit: Budget source"
             # NPC-only, NOT packaged: grantmaking demo custom fields (caps/locks),
             # the Budget Configuration CMDT record for the standard NPC budget data
-            # model, and the four Edit forms. Depends on the CMDT type (step 4).
+            # model, the four Edit forms, and the budgetFormSectionNPC wrapper.
+            # Depends on the CMDT type (step 4).
+            #
+            # `unmanaged` answers exactly ONE question: what does %%%NAMESPACE_OR_C%%%
+            # become in budgetFormSectionNPC.html, which nests the MANAGED Universal
+            # Budget component?
+            #   unmanaged: True  -> <c-universal-budget>            namespaced dev org
+            #                       (LWC1504 forbids naming your own namespace)
+            #   unmanaged: False -> <FlowToolKit-universal-budget>  subscriber org
+            # It does NOT affect %%%NAMESPACED_ORG%%%, which every other token in this
+            # bundle uses - that keys off the independent `namespaced_org` flag
+            # (auto-detected as namespace == org_config.namespace). Never introduce
+            # %%%NAMESPACE%%% into this bundle; managed refs are written literal
+            # FlowToolKit__ on purpose.
             4.1:
                 task: deploy
                 options:
                     path: unpackaged/config/npc
                     namespace_inject: FlowToolKit
+                    unmanaged: True
                 ui_options:
                     name: "Deploy NPC grantmaking config (unpackaged)"
             # Production-grade orgs deploy flows as Draft (scratch orgs auto-activate)
@@ -75,6 +89,62 @@ flows:
                     path: scripts/seed_npc_budget.apex
                 ui_options:
                     name: "Seed NPC demo budget data"
+
+    # ── CLIENT (subscriber) org install ───────────────────────────────────────
+    # The install_npc flow above is for DEV orgs: its step 4 source-deploys
+    # force-app, which is this package's own code. A client org must INSTALL the
+    # released managed package instead, and must not get the demo seed.
+    #   cci flow run install_npc_client --org <client org>
+    install_npc_client:
+        description: "Install the Universal Budget for NPC Grantmaking into a client (subscriber) org: the latest PRODUCTION release of Flow Tool Kit: Universal Budget and its dependencies, then the NPC grantmaking config bundle, flow activation, and permission set assignment. No demo seed data, no source deploy."
+        group: "Flow Tool Kit: Universal Budget"
+        steps:
+            # Base Flow Tool Kit dependency + the latest PRODUCTION release of this
+            # package (install_managed version: latest). This is the subscriber-org
+            # equivalent of install_npc steps 1 and 4 - install the 04t, never
+            # source-deploy force-app into a client org.
+            1:
+                flow: install_prod_no_config
+            # Grantmaking permission set license for the installing admin. A client
+            # org normally has Grantmaking configured already, hence ignore_failure.
+            2:
+                task: assign_permission_set_licenses
+                options:
+                    api_names: GrantmakingPsl
+                ignore_failure: True
+            # The NPC config bundle. `unmanaged: False` is REQUIRED here and is the
+            # only difference from install_npc step 4.1: it makes
+            # %%%NAMESPACE_OR_C%%% in budgetFormSectionNPC.html resolve to
+            # <FlowToolKit-universal-budget>, which is how the managed component is
+            # addressed from loose metadata in a subscriber org. It does NOT affect
+            # %%%NAMESPACED_ORG%%% - that keys off the independent `namespaced_org`
+            # flag, auto-detected as False here, so local field refs deploy bare.
+            3:
+                task: deploy
+                options:
+                    path: unpackaged/config/npc
+                    namespace_inject: FlowToolKit
+                    unmanaged: False
+                ui_options:
+                    name: "Deploy NPC grantmaking config (unpackaged)"
+            # Production-grade orgs deploy flows as Draft - activate them explicitly
+            4:
+                task: activate_flow
+                options:
+                    developer_names:
+                        - BudgetCategory_After_Save_Resequence_Positions
+                        - BudgetPeriod_After_Save_Budget_Automation
+                        - BudgetCategoryValue_After_Update_Sync_Line_Item_Names
+                        - IndividualApplication_After_Create_Clone_Template_Budget
+                ui_options:
+                    name: "Activate budget automation flows"
+            # Assigns to the INSTALLING user so the admin can verify immediately.
+            # Everyone else is assigned by the client's own admin - see the runbook.
+            5:
+                task: assign_permission_sets
+                options:
+                    api_names: Form_Universal_Budget_NPC_User,Form_Universal_Budget_NPC_Manager,Form_Universal_Budget_User,Form_Universal_Budget_Template_Manager
+
 
     # Outbound Funds flavor. NPSP and Outbound Funds (Core) are installed as flow
     # steps for demo realism - deliberately NOT project dependencies; the Budget
@@ -113,12 +183,26 @@ flows:
             # OFM-only, NOT packaged: the custom budget tree (Budget__c container +
             # Budget_Category__c/Budget_Period__c/Budget_Value__c), lookups on
             # Funding Request/Program, Budget Configuration record, clone +
-            # automation flows, the four OFM Edit forms, and the record page.
+            # automation flows, the four OFM Edit forms, the record page, and the
+            # budgetFormSectionOFM wrapper.
+            #
+            # `unmanaged` answers exactly ONE question: what does %%%NAMESPACE_OR_C%%%
+            # become in budgetFormSectionOFM.html, which nests the MANAGED Universal
+            # Budget component?
+            #   unmanaged: True  -> <c-universal-budget>            namespaced dev org
+            #                       (LWC1504 forbids naming your own namespace)
+            #   unmanaged: False -> <FlowToolKit-universal-budget>  subscriber org
+            # It does NOT affect %%%NAMESPACED_ORG%%%, which every other token in this
+            # bundle uses - that keys off the independent `namespaced_org` flag
+            # (auto-detected as namespace == org_config.namespace). Never introduce
+            # %%%NAMESPACE%%% into this bundle; managed refs are written literal
+            # FlowToolKit__ on purpose.
             4.1:
                 task: deploy
                 options:
                     path: unpackaged/config/ofm
                     namespace_inject: FlowToolKit
+                    unmanaged: True
                 ui_options:
                     name: "Deploy Outbound Funds budget config (unpackaged)"
             # Production-grade orgs deploy flows as Draft (scratch orgs auto-activate)

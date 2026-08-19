@@ -11,6 +11,10 @@
             <targetReference>Clone_Succeeded</targetReference>
         </connector>
         <dataTypeMappings>
+            <typeName>T__budgetTemplate</typeName>
+            <typeValue>%%%NAMESPACED_ORG%%%Budget__c</typeValue>
+        </dataTypeMappings>
+        <dataTypeMappings>
             <typeName>U__record</typeName>
             <typeValue>%%%NAMESPACED_ORG%%%Budget__c</typeValue>
         </dataTypeMappings>

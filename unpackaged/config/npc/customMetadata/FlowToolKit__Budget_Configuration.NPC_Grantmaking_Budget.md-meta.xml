@@ -168,15 +168,15 @@
     </values>
     <values>
         <field>FlowToolKit__Category_Mode_Field__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.Mode__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Mode__c</value>
     </values>
     <values>
         <field>FlowToolKit__Category_Min_Quantity_Field__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.Minimum_Quantity__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Minimum_Quantity__c</value>
     </values>
     <values>
         <field>FlowToolKit__Category_Max_Quantity_Field__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.Maximum_Quantity__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Maximum_Quantity__c</value>
     </values>
     <values>
         <field>FlowToolKit__Value_Quantity_Field__c</field>
@@ -184,7 +184,7 @@
     </values>
     <values>
         <field>FlowToolKit__Value_Percent_Field__c</field>
-        <value xsi:type="xsd:string">BudgetCategoryValue.Percent__c</value>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%Percent__c</value>
     </values>
     <values>
         <field>FlowToolKit__Value_Actual_Amount_Field__c</field>
@@ -196,7 +196,7 @@
     </values>
     <values>
         <field>FlowToolKit__Value_Actual_Percent_Field__c</field>
-        <value xsi:type="xsd:string">BudgetCategoryValue.ActualPercent__c</value>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%ActualPercent__c</value>
     </values>
     <values>
         <field>FlowToolKit__Period_Submitted_Field__c</field>
@@ -220,6 +220,6 @@
     </values>
     <values>
         <field>FlowToolKit__Budget_Variance_Threshold_Field__c</field>
-        <value xsi:type="xsd:string">Budget.Variance_Threshold__c</value>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Variance_Threshold__c</value>
     </values>
 </CustomMetadata>
