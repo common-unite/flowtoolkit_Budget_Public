@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Compte</label>
+        <name>%%%NAMESPACED_ORG%%%Account__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'API qualifié du formulaire de budget</label>
+        <name>%%%NAMESPACED_ORG%%%Budget_FormQualifiedApiName__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'API qualifié du formulaire de catégorie</label>
+        <name>%%%NAMESPACED_ORG%%%Category_FormQualifiedApiName__c</name>
+    </fields>
+    <fields>
+        <label>Montant maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Montant minimum</label>
+        <name>%%%NAMESPACED_ORG%%%Minimum_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'API qualifié du formulaire de période</label>
+        <name>%%%NAMESPACED_ORG%%%Period_FormQualifiedApiName__c</name>
+    </fields>
+    <fields>
+        <label>Montant demandé</label>
+        <name>%%%NAMESPACED_ORG%%%Requested_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Nom d'API qualifié du formulaire de valeur</label>
+        <name>%%%NAMESPACED_ORG%%%Value_FormQualifiedApiName__c</name>
+    </fields>
+    <fields>
+        <label>Seuil d'écart</label>
+        <name>%%%NAMESPACED_ORG%%%Variance_Threshold__c</name>
+    </fields>
+</CustomObjectTranslation>

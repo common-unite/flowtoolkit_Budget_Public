@@ -76,6 +76,9 @@
     "nameSettings": {
       "enableMiddleName": true,
       "enableNameSuffix": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
     }
   },
   "objectSettings": {

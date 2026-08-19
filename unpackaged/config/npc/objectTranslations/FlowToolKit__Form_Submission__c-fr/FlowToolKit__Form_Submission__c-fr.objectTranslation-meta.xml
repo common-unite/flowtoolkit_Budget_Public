@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Budget (Grantmaking)</label>
+        <name>%%%NAMESPACED_ORG%%%Budget_NPC__c</name>
+    </fields>
+</CustomObjectTranslation>

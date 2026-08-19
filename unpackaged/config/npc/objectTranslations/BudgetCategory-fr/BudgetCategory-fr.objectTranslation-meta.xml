@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Date de fin</label>
+        <name>%%%NAMESPACED_ORG%%%End_Date__c</name>
+    </fields>
+    <fields>
+        <label>Icône</label>
+        <name>%%%NAMESPACED_ORG%%%Icon__c</name>
+    </fields>
+    <fields>
+        <label>Mode poste</label>
+        <name>%%%NAMESPACED_ORG%%%Line_Item_Mode__c</name>
+    </fields>
+    <fields>
+        <label>Montant de financement maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Funding_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Pourcentage maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Percentage__c</name>
+    </fields>
+    <fields>
+        <label>Quantité maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Quantity__c</name>
+    </fields>
+    <fields>
+        <label>Montant de financement minimum</label>
+        <name>%%%NAMESPACED_ORG%%%Minimum_Funding_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Quantité minimum</label>
+        <name>%%%NAMESPACED_ORG%%%Minimum_Quantity__c</name>
+    </fields>
+    <fields>
+        <label>Mode</label>
+        <name>%%%NAMESPACED_ORG%%%Mode__c</name>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation>Devise</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quantity</masterLabel>
+            <translation>Quantité</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent</masterLabel>
+            <translation>Pourcentage</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Date de début</label>
+        <name>%%%NAMESPACED_ORG%%%Start_Date__c</name>
+    </fields>
+</CustomObjectTranslation>

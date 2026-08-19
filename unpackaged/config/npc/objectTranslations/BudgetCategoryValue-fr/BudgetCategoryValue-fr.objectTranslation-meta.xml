@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Pourcentage réalisé</label>
+        <name>%%%NAMESPACED_ORG%%%ActualPercent__c</name>
+    </fields>
+    <fields>
+        <label>Fixe</label>
+        <name>%%%NAMESPACED_ORG%%%Fixed__c</name>
+    </fields>
+    <fields>
+        <label>Identifiant de regroupement</label>
+        <name>%%%NAMESPACED_ORG%%%Grouping_Identifier__c</name>
+    </fields>
+    <fields>
+        <label>Pourcentage</label>
+        <name>%%%NAMESPACED_ORG%%%Percent__c</name>
+    </fields>
+</CustomObjectTranslation>

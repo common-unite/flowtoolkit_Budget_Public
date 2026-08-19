@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Description</label>
+        <name>%%%NAMESPACED_ORG%%%Description__c</name>
+    </fields>
+    <fields>
+        <label>Montant de financement maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Funding_Amount__c</name>
+    </fields>
+    <fields>
+        <label>Pourcentage maximum</label>
+        <name>%%%NAMESPACED_ORG%%%Maximum_Percentage__c</name>
+    </fields>
+    <fields>
+        <label>Montant de financement minimum</label>
+        <name>%%%NAMESPACED_ORG%%%Minimum_Funding_Amount__c</name>
+    </fields>
+</CustomObjectTranslation>

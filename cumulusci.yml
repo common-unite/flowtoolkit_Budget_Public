@@ -231,11 +231,23 @@ flows:
     # ── Dev-org flows: install flow + (npc) the EC portal ──────────────────────
     #   cci flow run npc_dev_org --org npc
     npc_dev_org:
-        description: "Grantmaking demo org: install_npc plus the Grantmaking Experience Cloud portal for EC testing. Requires the Grantmaking org shape (orgs/npc.json)."
+        description: "Grantmaking demo org: install_npc, the Budget record page that places the grid, plus the Grantmaking Experience Cloud portal for EC testing. Requires the Grantmaking org shape (orgs/npc.json)."
         group: "Flow Tool Kit: Universal Budget"
         steps:
             1:
                 flow: install_npc
+            # DEMO ONLY - deliberately NOT in unpackaged/config/npc, because that path
+            # is deployed to CLIENT orgs by install_npc_client and clients place the
+            # component themselves (they own their page layouts; the NPC Client Org
+            # Runbook covers the App Builder step). A demo org should just work, so it
+            # gets a Budget record page with the grid on it, assigned as the org
+            # default via an actionOverride. See #41.
+            1.5:
+                task: deploy
+                options:
+                    path: unpackaged/config/npc_demo
+                ui_options:
+                    name: "Deploy the demo Budget record page (grid placement)"
             # Grantmaking Experience Cloud portal (for testing the component in EC)
             2:
                 task: create_community
