@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Violations__c</fullName>
+    <defaultValue>false</defaultValue>
+    <label>Has Violations</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Stamped by the Universal Budget package (#47): true while any budget, category or period limit is breached, or money sits in a period outside the budget's dates. Mapped as the Budget Has Violations Field. The package writes it; enforcement (validation rules, Flows, approvals) is yours.</description>
+    <inlineHelpText>Shown when something in this budget is outside its limits. Open the budget to see what needs attention.</inlineHelpText>
+</CustomField>

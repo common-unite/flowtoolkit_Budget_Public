@@ -36,8 +36,9 @@
     <apiVersion>66.0</apiVersion>
     <description>When a line item's name changes, routes the change through the Flow Tool Kit Budget Trigger Handler, which syncs the new name to every OFM Budget Value sharing the same Grouping Identifier and Budget Category. The entry filter is an efficiency gate only - the handler detects changes itself.</description>
     <environments>Default</environments>
-    <interviewLabel>OFM Budget Value (After Update → Sync Line Item Names) {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>OFM Budget Value (After Update → Sync Line Item Names)</label>
+    <isOverridable>true</isOverridable>
+    <interviewLabel>OFM Budget Value (After Save → Names + Violations) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>OFM Budget Value (After Save → Names + Violations) | Overridable</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -57,12 +58,18 @@
         <connector>
             <targetReference>Budget_Trigger_Handler</targetReference>
         </connector>
-        <filterFormula>AND(
-  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Comments__c}),
-  NOT(ISBLANK({!$Record.%%%NAMESPACED_ORG%%%Grouping_Identifier__c}))
+        <filterFormula>OR(
+  ISNEW(),
+  AND(
+    ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Comments__c}),
+    NOT(ISBLANK({!$Record.%%%NAMESPACED_ORG%%%Grouping_Identifier__c}))
+  ),
+  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Amount__c}),
+  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Quantity__c}),
+  ISCHANGED({!$Record.%%%NAMESPACED_ORG%%%Percent__c})
 )</filterFormula>
         <object>%%%NAMESPACED_ORG%%%Budget_Value__c</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

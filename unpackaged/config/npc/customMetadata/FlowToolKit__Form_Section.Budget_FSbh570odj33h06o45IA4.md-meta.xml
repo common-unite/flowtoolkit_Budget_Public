@@ -32,10 +32,13 @@
   &quot;attributes&quot; : {
     &quot;type&quot; : &quot;FlowToolKit__Form_Component_Section__c&quot;
   },
+  &quot;FlowToolKit__Divider_Style__c&quot; : &quot;bookmark&quot;,
   &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Budget_Edit&quot;,
+  &quot;FlowToolKit__Header_Display__c&quot; : &quot;Divider&quot;,
+  &quot;FlowToolKit__iconName__c&quot; : &quot;utility:moneybag&quot;,
   &quot;FlowToolKit__position__c&quot; : 3.0,
   &quot;FlowToolKit__sectionType__c&quot; : &quot;inputSection&quot;,
-  &quot;FlowToolKit__showHeader__c&quot; : false,
+  &quot;FlowToolKit__showHeader__c&quot; : true,
   &quot;FlowToolKit__title__c&quot; : &quot;Min/Max Amounts&quot;,
   &quot;FlowToolKit__widthLarge__c&quot; : &quot;12&quot;,
   &quot;FlowToolKit__widthMedium__c&quot; : &quot;12&quot;,

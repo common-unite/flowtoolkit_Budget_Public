@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimate_Required__c</fullName>
+    <formula>BudgetCategory.Requires_Estimate__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Estimate Required</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Mirrors the category's Requires Estimate flag down to the value so the line item form can branch on it. Read-only formula; set the flag on the category, never here.</description>
+    <inlineHelpText>Shown when this line needs a quote or estimate attached before the budget is submitted.</inlineHelpText>
+</CustomField>

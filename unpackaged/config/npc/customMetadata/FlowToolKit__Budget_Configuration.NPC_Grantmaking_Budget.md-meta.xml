@@ -222,4 +222,108 @@
         <field>FlowToolKit__Budget_Variance_Threshold_Field__c</field>
         <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Variance_Threshold__c</value>
     </values>
+    <values>
+        <field>FlowToolKit__Budget_Actuals_Mode_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Actuals_Mode__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Start_Date_Field__c</field>
+        <value xsi:type="xsd:string">Budget.PeriodStartDate</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_End_Date_Field__c</field>
+        <value xsi:type="xsd:string">Budget.PeriodEndDate</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Has_Violations_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Has_Violations__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Violation_Count_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Violation_Count__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Violation_Details_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Violation_Details__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Estimate_FileUpload_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%File_Upload_Estimates__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Receipt_FileUpload_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%File_Upload_Receipts__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_FileUpload_Field__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.%%%NAMESPACED_ORG%%%Attachments__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Not_Fundable_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Not_Fundable__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Requires_Receipt_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Requires_Receipt__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Category_Requires_Estimate_Field__c</field>
+        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Requires_Estimate__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Disbursement_Object__c</field>
+        <value xsi:type="xsd:string">FundingDisbursement</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Disbursement_Period_Lookup__c</field>
+        <value xsi:type="xsd:string">FundingDisbursement.%%%NAMESPACED_ORG%%%Budget_Period__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Disbursement_Amount_Field__c</field>
+        <value xsi:type="xsd:string">FundingDisbursement.Amount</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Disbursement_Submitted_Field__c</field>
+        <value xsi:type="xsd:string">FundingDisbursement.%%%NAMESPACED_ORG%%%Claim_Submitted__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Disbursement_Name_Field__c</field>
+        <value xsi:type="xsd:string">FundingDisbursement.DisbursementName</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Object__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Value_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.BudgetCategoryValueId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Disbursement_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.FundingDisbursementId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Budget_Lookup__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.BudgetId</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Name_Field__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.Name</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Amount_Field__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.Amount</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Allocation_Quantity_Field__c</field>
+        <value xsi:type="xsd:string">BudgetAllocation.Quantity</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Default_Allocation_Form__c</field>
+        <value xsi:type="xsd:string">Allocation_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Edit_Allocation_Form_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Allocation_FormQualifiedApiName__c</value>
+    </values>
 </CustomMetadata>

@@ -36,8 +36,9 @@
     <apiVersion>66.0</apiVersion>
     <description>When an OFM Budget Period is created or its Sequence changes, routes the change through the Flow Tool Kit Budget Trigger Handler: new periods graduate the budget's category-only (periodless) values onto the first period, and every period in the budget is renumbered to a gapless 1..N. The entry filter is an efficiency gate only - the handler detects changes itself.</description>
     <environments>Default</environments>
+    <isOverridable>true</isOverridable>
     <interviewLabel>OFM Budget Period (After Save → Budget Automation) {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>OFM Budget Period (After Save → Budget Automation)</label>
+    <label>OFM Budget Period (After Save → Budget Automation) | Overridable</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

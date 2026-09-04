@@ -4,6 +4,21 @@
     <description>Full access for the NPC budget data model: build and maintain budgets, categories, periods, caps, and defaults. Pair with Form (Universal Budget Template Manager).</description>
     <hasActivationRequired>false</hasActivationRequired>
     <fieldPermissions>
+        <field>BudgetCategory.Not_Fundable__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategory.Requires_Receipt__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategory.Requires_Estimate__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>BudgetCategory.Mode__c</field>
         <readable>true</readable>
         <editable>true</editable>
@@ -50,6 +65,41 @@
     </fieldPermissions>
     <fieldPermissions>
         <field>Budget.Maximum_Amount__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Allocation_FormQualifiedApiName__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Has_Violations__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Violation_Count__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Violation_Details__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetAllocation.Attachments_Required__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetAllocation.Attachments__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget.Actuals_Mode__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
@@ -134,6 +184,41 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>BudgetCategoryValue.Budget_Submitted__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.Estimate_Required__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.Line_Item_Mode__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.Receipt_Required__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.Value_Label__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.File_Upload_Estimates__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>BudgetCategoryValue.File_Upload_Receipts__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>BudgetCategoryValue.Fixed__c</field>
         <readable>true</readable>
         <editable>true</editable>
@@ -144,12 +229,27 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>Budget.Account__c</field>
+        <field>FlowToolKit__Form_Submission__c.Budget_NPC__c</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>FlowToolKit__Form_Submission__c.Budget_NPC__c</field>
+        <field>FundingDisbursement.Budget_Period__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>FundingDisbursement.Amount</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>FundingDisbursement.Claim_Submitted__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>FundingDisbursement.DisbursementName</field>
         <readable>true</readable>
         <editable>true</editable>
     </fieldPermissions>

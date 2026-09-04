@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Violation_Details__c</fullName>
+    <label>Violation Details</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>6</visibleLines>
+    <description>Stamped by the Universal Budget package (#47): one breached limit per line, in the org default language, using the same wording as the grid's Review issues list. Mapped as the Budget Violation Details Field.</description>
+    <inlineHelpText>What needs attention in this budget, one item per line.</inlineHelpText>
+</CustomField>

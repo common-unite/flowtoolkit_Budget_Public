@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Receipt_Required__c</fullName>
+    <formula>BudgetCategory.Requires_Receipt__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Receipt Required</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Mirrors the category's Requires Receipt flag down to the value so the line item form can branch on it. Read-only formula; set the flag on the category, never here.</description>
+    <inlineHelpText>Shown when this line needs a receipt attached for anything you claim against it.</inlineHelpText>
+</CustomField>

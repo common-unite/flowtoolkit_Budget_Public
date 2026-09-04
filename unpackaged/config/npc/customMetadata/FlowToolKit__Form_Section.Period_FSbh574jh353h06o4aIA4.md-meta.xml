@@ -33,9 +33,10 @@
     &quot;type&quot; : &quot;FlowToolKit__Form_Component_Section__c&quot;
   },
   &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Period_Edit&quot;,
-  &quot;FlowToolKit__position__c&quot; : 5.0,
+  &quot;FlowToolKit__Header_Display__c&quot; : &quot;Divider&quot;,
+  &quot;FlowToolKit__position__c&quot; : 3.0,
   &quot;FlowToolKit__sectionType__c&quot; : &quot;inputSection&quot;,
-  &quot;FlowToolKit__showHeader__c&quot; : false,
+  &quot;FlowToolKit__showHeader__c&quot; : true,
   &quot;FlowToolKit__title__c&quot; : &quot;Min and Max&quot;,
   &quot;FlowToolKit__widthLarge__c&quot; : &quot;12&quot;,
   &quot;FlowToolKit__widthMedium__c&quot; : &quot;12&quot;,
@@ -52,6 +53,6 @@
     </values>
     <values>
         <field>FlowToolKit__position__c</field>
-        <value xsi:type="xsd:double">5.0</value>
+        <value xsi:type="xsd:double">3.0</value>
     </values>
 </CustomMetadata>

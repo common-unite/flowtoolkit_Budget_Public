@@ -11,6 +11,10 @@
         <value xsi:type="xsd:string">Template(s)</value>
     </values>
     <values>
+        <field>FlowToolKit__Default_Override_Form__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>FlowToolKit__Delete__c</field>
         <value xsi:type="xsd:boolean">false</value>
     </values>

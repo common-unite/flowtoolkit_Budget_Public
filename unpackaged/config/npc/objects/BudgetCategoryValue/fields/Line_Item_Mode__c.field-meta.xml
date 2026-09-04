@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Line_Item_Mode__c</fullName>
+    <formula>BudgetCategory.Line_Item_Mode__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Line Item Mode</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Mirrors the category's Line Item Mode down to the value so the form shows the line item name only where lines are named. Read-only formula.</description>
+    <inlineHelpText>Shown when this category is broken into named lines rather than a single amount per period.</inlineHelpText>
+</CustomField>

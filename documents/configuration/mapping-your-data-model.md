@@ -37,6 +37,9 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Budget_Min_Field__c` / `Budget_Max_Field__c` | Overall minimum and maximum limits. |
 | `Budget_Read_Only_Field__c` | A field (often a formula) that, when true, makes the whole grid read-only. |
 | `Budget_Variance_Threshold_Field__c` | Variance threshold percent used in reporting mode. |
+| `Budget_Actuals_Mode_Field__c` | Actuals mode picklist, `Direct` or `Allocation`; blank means Direct. See [Claims & Allocation Mode](../features/claims-and-allocation-mode.md). |
+| `Budget_Start_Date_Field__c` / `Budget_End_Date_Field__c` | The budget's own date window. Blank shows every period; mapped, periods outside the window are hidden only while they hold no non-zero figures. See [Scoping periods with budget dates](../features/budget-grid-and-modes.md#scoping-periods-with-budget-dates). |
+| `Budget_Has_Violations_Field__c` / `Budget_Violation_Count_Field__c` / `Budget_Violation_Details_Field__c` | Fields the package stamps with the grid's violation state (checkbox, number, long text: one breach per line). Blank disables stamping. See [Violations as data on the budget](../features/limits-validation-and-reporting.md#violations-as-data-on-the-budget). |
 
 ## Category fields
 
@@ -51,6 +54,9 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Category_Percentage_Field__c` | Maximum percentage of the total budget. |
 | `Category_Min_Quantity_Field__c` / `Category_Max_Quantity_Field__c` | Quantity limits. |
 | `Category_Start_Date_Field__c` / `Category_End_Date_Field__c` | Dates that scope which periods the category applies to. |
+| `Category_Not_Fundable_Field__c` | A checkbox marking the exception: a category the funder does not pay (a match, other funding sources). Checked categories stay on the authoring grid, leave the reporting and claim sheets, and never reach a disbursement amount. Unmapped or unchecked means fundable. |
+| `Category_Requires_Receipt_Field__c` | A checkbox marking categories whose claim lines need a receipt. Rows of checked categories show an attachment icon in place of the edit pencil on the claim sheet; it opens the same mapped edit form, where the file upload field belongs. Unmapped or unchecked keeps the ordinary pencil. |
+| `Category_Requires_Estimate_Field__c` | The authoring-side sibling: a checkbox marking categories whose budget lines need a quote or estimate. Cells of checked categories show an attachment icon in place of the edit pencil on the authoring grid, opening the same mapped value edit form. |
 
 ## Period fields
 
@@ -72,6 +78,34 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Value_Name_Field__c` | Line item name. |
 | `Value_Grouping_Identifier_Field__c` | Groups the cells of one line item across periods. |
 | `Value_Fixed_Field__c` | Marks a cell fixed so split-evenly and fills skip it. |
+| `Value_Estimate_FileUpload_Field__c` | Long text the file upload field in your value edit form writes for estimates. The authoring grid lights a cell's icon once files are there, and a Requires Estimate category flags a money line that has none. See [Attachments on line items](../features/budget-grid-and-modes.md#attachments-on-line-items). |
+| `Value_Receipt_FileUpload_Field__c` | The same for receipts, read by Direct reporting sheets. Allocation mode reads the claim line's own upload field instead, since a receipt belongs to the claim. |
+
+## Disbursement fields (optional role)
+
+Map these and the grid opens from a disbursement record, showing that disbursement's period. Leave them blank and nothing changes.
+
+| Field | Points at / maps to |
+| --- | --- |
+| `Disbursement_Object__c` | The disbursement object (NPC: `FundingDisbursement`). |
+| `Disbursement_Period_Lookup__c` | Disbursement → its period. A disbursement without it cannot open the grid. |
+| `Disbursement_Amount_Field__c` | The amount the package keeps in agreement with the lines that produced it. |
+| `Disbursement_Name_Field__c` | The name shown in the sheet header. |
+| `Disbursement_Submitted_Field__c` | The boolean that locks the sheet opened from this disbursement (read, never written). |
+
+## Allocation fields (optional role)
+
+Map these, and set a budget's actuals mode to `Allocation`, to turn the sheet opened from a disbursement into a claim sheet.
+
+| Field | Points at / maps to |
+| --- | --- |
+| `Allocation_Object__c` | The allocation (claim line) object (NPC: `BudgetAllocation`). |
+| `Allocation_Value_Lookup__c` | Allocation → the value (cell) it claims against. |
+| `Allocation_Disbursement_Lookup__c` | Allocation → the disbursement (claim) it belongs to. |
+| `Allocation_Budget_Lookup__c` | Allocation → the budget, filled on create (required on NPC). |
+| `Allocation_Amount_Field__c` / `Allocation_Quantity_Field__c` | The claimed amount, and the claimed quantity for quantity-mode lines. Line money is amount times quantity; a money line writes quantity one. |
+| `Allocation_Name_Field__c` | The line's name, filled from the value's name on create. |
+| `Allocation_FileUpload_Field__c` | The same for the claim line: the claim sheet's action icon lights once the allocation holds files (a receipt, a timesheet). |
 
 ## Edit forms
 
@@ -81,6 +115,7 @@ Structure editing happens through Flow Tool Kit **forms**, so you control exactl
 | --- | --- |
 | `Default_Budget_Form__c` / `Default_Category_Form__c` / `Default_Period_Form__c` / `Default_Value_Form__c` | The org-default edit form for each object. |
 | `Edit_Budget_Form_Field__c` / `Edit_Category_Form_Field__c` / `Edit_Period_Form_Field__c` / `Edit_Value_Form_Field__c` | The field *on the budget* that names a form to use instead of the default — so different budgets can offer different edit forms. |
+| `Default_Allocation_Form__c` / `Edit_Allocation_Form_Field__c` | The same pair for the allocation (claim line) form the pencil on a claim-sheet cell opens. |
 
 See [Forms, Flow & Experience Cloud](../integrations/forms-flow-and-experience-cloud.md) for building those forms.
 
@@ -89,3 +124,4 @@ See [Forms, Flow & Experience Cloud](../integrations/forms-flow-and-experience-c
 - Start from a bundled config and change the object and field names rather than building blank.
 - A field you leave blank is simply a capability the grid won't show — no maximum field means no maximum limit, no icon field means no category icons.
 - `Value_Period_Lookup__c` is the one relationship you can leave off, for categories-only ("periodless") budgets.
+- The disbursement and allocation roles are optional and independent: map the disbursement role alone for a second door into Direct-mode actuals plus a derived disbursement amount; map both for claims.

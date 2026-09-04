@@ -36,8 +36,9 @@
     <apiVersion>66.0</apiVersion>
     <description>When a Budget Category is created or its Sequence Number changes, routes the change through the Flow Tool Kit Budget Trigger Handler, which renumbers every category in the budget to a gapless 1..N - the changed record claims its requested position, siblings shift, and gaps close. The entry filter is an efficiency gate only - the handler detects changes itself.</description>
     <environments>Default</environments>
+    <isOverridable>true</isOverridable>
     <interviewLabel>BudgetCategory (After Save → Resequence Positions) {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>BudgetCategory (After Save → Resequence Positions)</label>
+    <label>BudgetCategory (After Save → Resequence Positions) | Overridable</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

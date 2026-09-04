@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Fundable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <label>Not Fundable</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Check on the categories the funder does not pay (Other Funding Sources, matching funds, in-kind). Mapped as the Category Not Fundable Field in the Universal Budget configuration. Checked categories appear in budget authoring only, so the project budget is complete; they are never shown in the reporting component and are excluded from every disbursement amount the grid derives. Leave unchecked on ordinary categories.</description>
+    <inlineHelpText>Check for costs covered by someone else, such as matching funds or another grant. They count towards your total project budget but are not claimed from this award.</inlineHelpText>
+</CustomField>

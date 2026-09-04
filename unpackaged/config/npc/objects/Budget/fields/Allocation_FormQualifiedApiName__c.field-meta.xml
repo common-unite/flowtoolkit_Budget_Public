@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocation_FormQualifiedApiName__c</fullName>
+    <label>Allocation Form Qualified API Name</label>
+    <defaultValue>&quot;%%%NAMESPACED_ORG%%%Allocation_Edit&quot;</defaultValue>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <description>Qualified API name of the Flow Tool Kit form used to edit the claim line (Budget Allocation) records from the Universal Budget claim sheet. Blank falls back to the configuration's Default Allocation Form. Mapped as the Edit Allocation Form Field.</description>
+    <inlineHelpText>Qualified API name (e.g. FlowToolKit__Allocation_Edit) of the form used to edit this budget's claim lines from the claim sheet's cell pencil. Leave blank to use the configured default.</inlineHelpText>
+</CustomField>

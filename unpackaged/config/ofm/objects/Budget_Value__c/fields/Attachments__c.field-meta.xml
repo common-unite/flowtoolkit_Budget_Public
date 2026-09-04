@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attachments__c</fullName>
+    <label>Attachments</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>4</visibleLines>
+    <description>Uploaded-files JSON written by the Flow Tool Kit file upload form field (#46). Mapped as the Value FileUpload Field so the Universal Budget grid can light its attachment indicator. Do not edit by hand.</description>
+    <inlineHelpText>Attach the receipt or invoice that supports this line.</inlineHelpText>
+</CustomField>

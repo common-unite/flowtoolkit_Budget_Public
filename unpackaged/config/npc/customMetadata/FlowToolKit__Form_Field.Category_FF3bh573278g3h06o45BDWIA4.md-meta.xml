@@ -71,7 +71,7 @@
     </values>
     <values>
         <field>FlowToolKit__fieldName__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%End_Date__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.FlowToolKit__End_Date__c</value>
     </values>
     <values>
         <field>FlowToolKit__maxDateFieldName__c</field>
@@ -79,7 +79,7 @@
     </values>
     <values>
         <field>FlowToolKit__minDateFieldName__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Start_Date__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.FlowToolKit__Start_Date__c</value>
     </values>
     <values>
         <field>FlowToolKit__position__c</field>

@@ -84,6 +84,18 @@ template-driven overrides.
 2. **Place the component.** Add **Universal Budget** to the Budget record page in Lightning App
    Builder.
 3. **Assign permission sets to real users.** Step 5 only covers the installing admin.
+4. **Place the claims fields.** The bundle adds fields to standard objects, and a managed package cannot
+   touch standard layouts, so add them yourself: `Actuals Mode` and `Allocation Form Qualified API Name` on the Budget layout; `Not Fundable`, `Requires Receipt` and `Requires Estimate` on the Budget Category layout; `Budget Period` and `Claim Submitted` on the
+   Funding Disbursement layout; and the **Funding Disbursements** related list on the Budget Period
+   layout. `Claim Submitted` is a formula (`NOT(ISPICKVAL(Status, "Scheduled"))`) that locks a claim
+   sheet once the disbursement leaves Scheduled; replace it with your own status logic if needed.
+5. **Choose the actuals mode.** Set `Actuals Mode` to *Allocation* on each budget template whose
+   grants are claimed in instalments; cloned budgets inherit it. Blank means Direct (one actual per
+   period). See [Claims & Allocation Mode](../features/claims-and-allocation-mode.md).
+6. **Check the sync Flows are active.** The install activates
+   `BudgetAllocation_After_Save_Actuals_Sync`, `BudgetAllocation_Before_Delete_Actuals_Sync` and
+   `FundingDisbursement_After_Save_Actuals_Sync`; they keep disbursement amounts and value actuals in
+   agreement with the claim lines.
 
 | Permission set | Who |
 | --- | --- |
@@ -100,6 +112,8 @@ template-driven overrides.
 - A user with **NPC User** can edit amounts and actuals but not structure.
 - Create an Individual Application against a Funding Opportunity that has a Budget Template - the
   clone flow should produce a budget on the application.
+- On an Allocation-mode budget, open a Funding Disbursement whose Budget Period is set: the claim
+  sheet renders. Type a claim on a line; the disbursement's Amount follows.
 
 If the grid is blank where you placed the form-section wrapper, check that the Form Submission's
 `Budget_NPC__c` lookup is populated; that lookup is what the wrapper reads.

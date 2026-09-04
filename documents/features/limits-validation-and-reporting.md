@@ -28,18 +28,38 @@ As values change, the grid re-checks every limit:
 
 You can also click any category to see its start date, end date, and any limits that apply to it, without opening the edit form.
 
+### Violations as data on the budget
+
+Map the three violation fields and the package **stamps the same list onto the budget record**
+whenever a value is created, changed or deleted: a checkbox (any breach?), a count, and a long text
+carrying one breached limit per line in your org's default language, worded exactly like the Review
+issues list. Removing the row that caused a breach clears the flag.
+
+The package never blocks anything with these fields - that is the point. They turn violations into
+plain data, so **you** decide what "not allowed" means with the tools you already have:
+
+- a validation rule on the budget: `Has_Violations__c = false` required before Status can change to
+  Submitted
+- a record-triggered Flow that emails the program officer when the count rises
+- list views and reports over budgets with breaches
+
+On NPC and Outbound Funds the bundled configuration maps all three out of the box, and the bundle's
+record-triggered flows keep them current.
+
+Missing **estimates** count here too: a cell carrying money in a Requires Estimate category with nothing uploaded is one grouped violation on the stamp, so a submit Flow can refuse a budget that still owes quotes. Missing **receipts** are deliberately absent from the stamp: a receipt belongs to one claim, not to the budget this field describes, and the claim sheet reports it there instead.
+
 ## Requested vs. budgeted
 
 The header contrasts **Requested** (what the grant or request is for) with **Budgeted** (what the categories currently add up to), plus an allocation bar and an over/under indicator. This is the fastest read on whether a budget is balanced.
 
 ## Reporting mode (budget vs. actuals)
 
-Point the component at a budget **period** record instead of the whole budget and the grid flips into **reporting mode** — an actuals-entry grid for that period.
+Point the component at a budget **period** record instead of the whole budget and the grid flips into **reporting mode** — an actuals-entry grid for that period. Point it at a **disbursement** record (with the disbursement role mapped) and the same sheet opens for that disbursement's period; on a budget in Allocation mode it becomes a claim sheet, see [Claims & Allocation Mode](claims-and-allocation-mode.md).
 
 > **See it live:** [Year 2 reporting window](https://common-unite.my.site.com/s/budget/a0rRQ00000pF7dPYAS/year-2) — budgeted vs. actual vs. variance on a public demo site.
 
 - Each line item shows **budgeted**, **actual**, and **variance** side by side.
-- A cumulative, grant-to-date strip tracks spend across periods.
+- A cumulative, grant-to-date strip tracks spend across periods: budgeted vs actuals reported, or budgeted vs claimed on an Allocation-mode budget.
 - Categories over their variance threshold are flagged for review. The threshold is configurable per budget.
 
 ![Reporting mode: entering actuals against budgeted amounts, with live variance and grant-to-date totals](../screenshots/33-reporting-actuals-demo.gif)

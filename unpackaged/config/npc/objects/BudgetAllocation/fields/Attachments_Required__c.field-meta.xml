@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attachments_Required__c</fullName>
+    <formula>BudgetCategoryValue.Receipt_Required__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Attachments Required</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Mirrors the value's Receipt Required flag down to the claim line so the claim form can branch on it, the same pattern the value object uses. Read-only formula; set the flag on the category, never here.</description>
+    <inlineHelpText>Shown when this claim needs a receipt attached before it can be reviewed.</inlineHelpText>
+</CustomField>

@@ -34,10 +34,11 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>66.0</apiVersion>
-    <description>When a line item's name (Comments) changes, routes the change through the Flow Tool Kit Budget Trigger Handler, which syncs the new name to every Budget Category Value sharing the same Grouping Identifier and Budget Category. The entry filter is an efficiency gate only - the handler detects changes itself.</description>
+    <description>When a line item's name (Comments) or its actual amount or quantity changes, routes the change through the Flow Tool Kit Budget Trigger Handler: a changed name syncs to every Budget Category Value sharing the same Grouping Identifier and Budget Category; a changed actual on a Direct-mode budget fills the period's single Funding Disbursement amount from the period's actuals in fundable categories. A created or changed budgeted figure (Amount, Quantity, Percent) also restamps the budget's violation fields (#47). The entry filter is an efficiency gate only - the handler detects changes itself.</description>
     <environments>Default</environments>
-    <interviewLabel>BudgetCategoryValue (After Update → Sync Line Item Names) {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>BudgetCategoryValue (After Update → Sync Line Item Names)</label>
+    <isOverridable>true</isOverridable>
+    <interviewLabel>BudgetCategoryValue (After Save → Names + Actuals + Violations) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>BudgetCategoryValue (After Save → Names + Actuals + Violations) | Overridable</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -57,12 +58,20 @@
         <connector>
             <targetReference>Budget_Trigger_Handler</targetReference>
         </connector>
-        <filterFormula>AND(
-  ISCHANGED({!$Record.Comments}),
-  NOT(ISBLANK({!$Record.Grouping_Identifier__c}))
+        <filterFormula>OR(
+  ISNEW(),
+  AND(
+    ISCHANGED({!$Record.Comments}),
+    NOT(ISBLANK({!$Record.Grouping_Identifier__c}))
+  ),
+  ISCHANGED({!$Record.ActualAmount}),
+  ISCHANGED({!$Record.ActualQuantity}),
+  ISCHANGED({!$Record.Amount}),
+  ISCHANGED({!$Record.Quantity}),
+  ISCHANGED({!$Record.Percent__c})
 )</filterFormula>
         <object>BudgetCategoryValue</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

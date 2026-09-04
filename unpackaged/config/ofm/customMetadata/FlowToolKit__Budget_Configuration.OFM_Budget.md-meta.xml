@@ -39,6 +39,26 @@
         <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Variance_Threshold__c</value>
     </values>
     <values>
+        <field>FlowToolKit__Budget_Start_Date_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Start_Date__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_End_Date_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%End_Date__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Has_Violations_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Has_Violations__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Violation_Count_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Violation_Count__c</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Budget_Violation_Details_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Violation_Details__c</value>
+    </values>
+    <values>
         <field>FlowToolKit__Edit_Budget_Form_Field__c</field>
         <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget__c.%%%NAMESPACED_ORG%%%Budget_FormQualifiedApiName__c</value>
     </values>
@@ -221,5 +241,9 @@
     <values>
         <field>FlowToolKit__Default_Value_Form__c</field>
         <value xsi:type="xsd:string">OFM_Value_Edit</value>
+    </values>
+    <values>
+        <field>FlowToolKit__Value_Receipt_FileUpload_Field__c</field>
+        <value xsi:type="xsd:string">%%%NAMESPACED_ORG%%%Budget_Value__c.%%%NAMESPACED_ORG%%%Attachments__c</value>
     </values>
 </CustomMetadata>

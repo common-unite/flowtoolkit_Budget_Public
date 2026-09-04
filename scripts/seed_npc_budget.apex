@@ -5,13 +5,18 @@ String seedBudgetName = 'Riverside Community Garden - 3-Year Grant';
 String seedOpportunityName = 'Riverside Community Garden Grants 2026';
 String seedEmptyOpportunityName = 'Riverside Expansion Fund 2027';
 Set<String> seedOpportunityNameSet = new Set<String>{ seedOpportunityName, seedEmptyOpportunityName };
+String seedAwardName = 'Riverside Community Garden - Award';
 
 // clone budgets share the template's name, so this cleanup also collects clones from demo runs
 List<Budget> existingBudgets = [SELECT Id FROM Budget WHERE Name = :seedBudgetName];
 delete [SELECT Id FROM IndividualApplication WHERE BudgetId IN :existingBudgets OR FundingOpportunity.Name IN :seedOpportunityNameSet];
 delete [SELECT Id FROM FundingOpportunity WHERE Name IN :seedOpportunityNameSet];
+// allocations reference both the budget and the disbursement: they go before either parent
+delete [SELECT Id FROM BudgetAllocation WHERE BudgetId IN :existingBudgets OR FundingDisbursement.FundingAward.Name = :seedAwardName];
+delete [SELECT Id FROM FundingDisbursement WHERE FundingAward.Name = :seedAwardName];
+delete [SELECT Id FROM FundingAward WHERE Name = :seedAwardName];
 if (!existingBudgets.isEmpty()) {
-    // children first: BudgetCategoryValue blocks cascade deletes through its period lookup
+    // children first: BudgetCategoryValue blocks cascade deletes through its period lookup (allocations went above)
     delete [SELECT Id FROM BudgetCategoryValue WHERE BudgetCategory.BudgetId IN :existingBudgets];
     delete [SELECT Id FROM BudgetPeriod WHERE BudgetId IN :existingBudgets];
     delete [SELECT Id FROM BudgetCategory WHERE BudgetId IN :existingBudgets];
@@ -27,7 +32,8 @@ Budget budget = new Budget(
     %%%NAMESPACED_ORG%%%Minimum_Amount__c = 50000,
     %%%NAMESPACED_ORG%%%Maximum_Amount__c = 250000,
     %%%NAMESPACED_ORG%%%Requested_Amount__c = 240000,
-    %%%NAMESPACED_ORG%%%Variance_Threshold__c = 10
+    %%%NAMESPACED_ORG%%%Variance_Threshold__c = 10,
+    %%%NAMESPACED_ORG%%%Actuals_Mode__c = 'Allocation' // claims are the flagship demo (#53); Direct is one picklist flip away
 );
 insert budget;
 
@@ -102,6 +108,13 @@ List<BudgetCategory> budgetCategories = new List<BudgetCategory>{
         Description = 'Share of program milestones completed per year (rows cap at 100%).',
         %%%NAMESPACED_ORG%%%Icon__c = 'utility:percent',
         %%%NAMESPACED_ORG%%%Mode__c = 'Percent'
+    ),
+    // not paid by the funder: part of the project budget in authoring, hidden from the reporting sheet (#53)
+    new BudgetCategory(
+        Name = 'Other Funding Sources', BudgetId = budget.Id, SequenceNumber = 8,
+        Description = 'Municipal match and in-kind contributions the funder does not pay.',
+        %%%NAMESPACED_ORG%%%Icon__c = 'utility:company',
+        %%%NAMESPACED_ORG%%%Not_Fundable__c = true
     )
 };
 insert budgetCategories;
@@ -112,11 +125,11 @@ BudgetCategory supplies = budgetCategories[3];
 BudgetCategory indirectCosts = budgetCategories[4];
 BudgetCategory treesPlanted = budgetCategories[5];
 BudgetCategory programCompletion = budgetCategories[6];
+BudgetCategory otherFunding = budgetCategories[7];
 
 List<BudgetCategoryValue> budgetCategoryValues = new List<BudgetCategoryValue>{
     // Personnel line item: Program Director (all three years)
     new BudgetCategoryValue(BudgetCategoryId = personnel.Id, BudgetDivisionId = year1.Id, Amount = 40000,
-        ActualAmount = 43000, // Year 1 actuals seeded for reporting mode: an overspend to demo the red variance
         Comments = 'Program Director', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-personnel-director'),
     new BudgetCategoryValue(BudgetCategoryId = personnel.Id, BudgetDivisionId = year2.Id, Amount = 41000,
         Comments = 'Program Director', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-personnel-director'),
@@ -124,7 +137,6 @@ List<BudgetCategoryValue> budgetCategoryValues = new List<BudgetCategoryValue>{
         Comments = 'Program Director', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-personnel-director'),
     // Personnel line item: Garden Coordinator (sparse - no Year 3)
     new BudgetCategoryValue(BudgetCategoryId = personnel.Id, BudgetDivisionId = year1.Id, Amount = 28000,
-        ActualAmount = 26500,
         Comments = 'Garden Coordinator', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-personnel-coordinator'),
     new BudgetCategoryValue(BudgetCategoryId = personnel.Id, BudgetDivisionId = year2.Id, Amount = 29000,
         Comments = 'Garden Coordinator', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-personnel-coordinator'),
@@ -138,7 +150,6 @@ List<BudgetCategoryValue> budgetCategoryValues = new List<BudgetCategoryValue>{
         Comments = 'Conference Travel', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-travel-conference'),
     // Supplies: all three years
     new BudgetCategoryValue(BudgetCategoryId = supplies.Id, BudgetDivisionId = year1.Id, Amount = 5000,
-        ActualAmount = 5000,
         Comments = 'Garden Supplies', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-supplies-general'),
     new BudgetCategoryValue(BudgetCategoryId = supplies.Id, BudgetDivisionId = year2.Id, Amount = 5000,
         Comments = 'Garden Supplies', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-supplies-general'),
@@ -169,9 +180,40 @@ List<BudgetCategoryValue> budgetCategoryValues = new List<BudgetCategoryValue>{
     new BudgetCategoryValue(BudgetCategoryId = programCompletion.Id, BudgetDivisionId = year2.Id, %%%NAMESPACED_ORG%%%Percent__c = 30,
         Comments = 'Milestones', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-completion'),
     new BudgetCategoryValue(BudgetCategoryId = programCompletion.Id, BudgetDivisionId = year3.Id, %%%NAMESPACED_ORG%%%Percent__c = 40,
-        Comments = 'Milestones', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-completion')
+        Comments = 'Milestones', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-completion'),
+    // Other Funding Sources: the Year 1 actual must NOT appear in the reporting totals
+    new BudgetCategoryValue(BudgetCategoryId = otherFunding.Id, BudgetDivisionId = year1.Id, Amount = 10000,
+        ActualAmount = 10000,
+        Comments = 'Municipal Match', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-other-municipal'),
+    new BudgetCategoryValue(BudgetCategoryId = otherFunding.Id, BudgetDivisionId = year2.Id, Amount = 10000,
+        Comments = 'Municipal Match', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-other-municipal'),
+    new BudgetCategoryValue(BudgetCategoryId = otherFunding.Id, BudgetDivisionId = year3.Id, Amount = 10000,
+        Comments = 'Municipal Match', %%%NAMESPACED_ORG%%%Grouping_Identifier__c = 'seed-other-municipal')
 };
 insert budgetCategoryValues;
+
+// two claims on Year 1 and an advance on Year 2 (#53); the award is only there because FundingAwardId is required. Year 1 currency
+// actuals are NOT seeded: the actuals sync derives them from the claim lines below (Director 20,000, Supplies 2,000; Claim 1 22,000)
+FundingAward fundingAward = new FundingAward(Name = seedAwardName);
+insert fundingAward;
+List<FundingDisbursement> disbursements = new List<FundingDisbursement>{
+    new FundingDisbursement(FundingAwardId = fundingAward.Id, DisbursementName = 'Claim 1', Status = 'Scheduled', Amount = 0,
+        %%%NAMESPACED_ORG%%%Budget_Period__c = year1.Id),
+    new FundingDisbursement(FundingAwardId = fundingAward.Id, DisbursementName = 'Claim 2', Status = 'Scheduled', Amount = 0,
+        %%%NAMESPACED_ORG%%%Budget_Period__c = year1.Id),
+    // the only disbursement on Year 2: the Direct-mode demo fills it from typed actuals (#53 Sprint 3)
+    new FundingDisbursement(FundingAwardId = fundingAward.Id, DisbursementName = 'Advance Y2', Status = 'Scheduled', Amount = 0,
+        %%%NAMESPACED_ORG%%%Budget_Period__c = year2.Id)
+};
+insert disbursements;
+
+// two claim lines on Claim 1 so Claim 2 shows Prior claimed on first open (#53 Sprint 2)
+insert new List<BudgetAllocation>{
+    new BudgetAllocation(Name = 'Program Director', BudgetId = budget.Id, BudgetCategoryValueId = budgetCategoryValues[0].Id,
+        FundingDisbursementId = disbursements[0].Id, Amount = 20000, Quantity = 1, Status = 'Allocated'),
+    new BudgetAllocation(Name = 'Garden Supplies', BudgetId = budget.Id, BudgetCategoryValueId = budgetCategoryValues[8].Id,
+        FundingDisbursementId = disbursements[0].Id, Amount = 2000, Quantity = 1, Status = 'Allocated')
+};
 
 // the budget doubles as a template: applications created for this opportunity clone it via the
 // IndividualApplication (After Insert -> Clone Template Budget) flow
@@ -184,4 +226,4 @@ FundingOpportunity emptyOpportunity = new FundingOpportunity(Name = seedEmptyOpp
 insert new List<FundingOpportunity>{ fundingOpportunity, emptyOpportunity };
 
 System.debug('Seeded Budget ' + budget.Id + ' with ' + budgetPeriods.size() + ' periods, '
-    + budgetCategories.size() + ' categories, ' + budgetCategoryValues.size() + ' values, and Funding Opportunity ' + fundingOpportunity.Id + '.');
+    + budgetCategories.size() + ' categories, ' + budgetCategoryValues.size() + ' values, ' + disbursements.size() + ' disbursements on Year 1, and Funding Opportunity ' + fundingOpportunity.Id + '.');

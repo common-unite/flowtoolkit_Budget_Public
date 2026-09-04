@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requires_Receipt__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <label>Requires Receipt</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Check on categories whose claim lines need a receipt. Mapped as the Category Requires Receipt Field in the Universal Budget configuration. Rows of checked categories show an attachment icon in place of the edit pencil on the claim sheet; the icon opens the same claim line form, where the file upload field belongs. Leave unchecked on ordinary categories.</description>
+    <inlineHelpText>Check if every amount claimed in this category needs a receipt attached.</inlineHelpText>
+</CustomField>

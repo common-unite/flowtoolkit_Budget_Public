@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>FlowToolKit__Delete__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>FlowToolKit__Form__c</field>
@@ -36,7 +36,7 @@
   &quot;FlowToolKit__marginBottom__c&quot; : &quot;slds-m-bottom_xx-small&quot;,
   &quot;FlowToolKit__marginTop__c&quot; : &quot;slds-m-top_small&quot;,
   &quot;FlowToolKit__paddingTop__c&quot; : &quot;slds-p-top_xxx-small&quot;,
-  &quot;FlowToolKit__position__c&quot; : 2.0,
+  &quot;FlowToolKit__position__c&quot; : 5.0,
   &quot;FlowToolKit__sectionType__c&quot; : &quot;dividerSection&quot;,
   &quot;FlowToolKit__showHeader__c&quot; : false,
   &quot;FlowToolKit__title__c&quot; : &quot;Divider&quot;,
@@ -55,6 +55,6 @@
     </values>
     <values>
         <field>FlowToolKit__position__c</field>
-        <value xsi:type="xsd:double">2.0</value>
+        <value xsi:type="xsd:double">5.0</value>
     </values>
 </CustomMetadata>

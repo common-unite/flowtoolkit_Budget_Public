@@ -31,6 +31,21 @@
         <editable>false</editable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>Budget__c.Has_Violations__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget__c.Violation_Count__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget__c.Violation_Details__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>Budget__c.Maximum_Amount__c</field>
         <readable>true</readable>
         <editable>false</editable>
@@ -212,6 +227,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <field>Budget_Value__c.Comments__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <field>Budget_Value__c.Attachments__c</field>
         <readable>true</readable>
         <editable>false</editable>
     </fieldPermissions>

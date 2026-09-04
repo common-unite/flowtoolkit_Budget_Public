@@ -16,4 +16,39 @@
         <label>Pourcentage</label>
         <name>%%%NAMESPACED_ORG%%%Percent__c</name>
     </fields>
+    <fields>
+        <help>Joignez le devis ou l'estimation qui justifie le montant prévu pour cette ligne.</help>
+        <label>Devis / estimation(s)</label>
+        <name>%%%NAMESPACED_ORG%%%File_Upload_Estimates__c</name>
+    </fields>
+    <fields>
+        <help>Joignez le reçu ou la facture correspondant à ce que vous avez réellement dépensé sur cette ligne.</help>
+        <label>Justificatif(s)</label>
+        <name>%%%NAMESPACED_ORG%%%File_Upload_Receipts__c</name>
+    </fields>
+    <fields>
+        <help>Affiché lorsque cette ligne doit être accompagnée d'un devis avant la soumission du budget.</help>
+        <label>Devis requis</label>
+        <name>%%%NAMESPACED_ORG%%%Estimate_Required__c</name>
+    </fields>
+    <fields>
+        <help>Affiché lorsque cette ligne doit être accompagnée d'un justificatif pour tout montant réclamé.</help>
+        <label>Justificatif requis</label>
+        <name>%%%NAMESPACED_ORG%%%Receipt_Required__c</name>
+    </fields>
+    <fields>
+        <help>Affiché une fois le budget soumis. Vous déclarez alors les dépenses réelles au lieu de modifier le plan.</help>
+        <label>Budget soumis</label>
+        <name>%%%NAMESPACED_ORG%%%Budget_Submitted__c</name>
+    </fields>
+    <fields>
+        <help>Affiché lorsque cette catégorie est détaillée en lignes nommées plutôt qu'en un seul montant par période.</help>
+        <label>Mode ligne par ligne</label>
+        <name>%%%NAMESPACED_ORG%%%Line_Item_Mode__c</name>
+    </fields>
+    <fields>
+        <help>La catégorie, la ligne et la période auxquelles ce montant se rapporte.</help>
+        <label>Libellé de la valeur</label>
+        <name>%%%NAMESPACED_ORG%%%Value_Label__c</name>
+    </fields>
 </CustomObjectTranslation>

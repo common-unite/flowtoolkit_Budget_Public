@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Submitted__c</fullName>
+    <formula>BudgetCategory.Budget.IsSubmitted</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Budget Submitted</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Mirrors the budget's Submitted flag down to the value so the form can swap between budgeting and reporting sections. Read-only formula.</description>
+    <inlineHelpText>Shown once the budget has been submitted. From then on you report what was spent instead of changing the plan.</inlineHelpText>
+</CustomField>

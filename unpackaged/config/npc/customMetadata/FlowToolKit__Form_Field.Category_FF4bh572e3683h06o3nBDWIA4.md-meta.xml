@@ -67,7 +67,7 @@
     </values>
     <values>
         <field>FlowToolKit__fieldName__c</field>
-        <value xsi:type="xsd:string">BudgetCategory.%%%NAMESPACED_ORG%%%Icon__c</value>
+        <value xsi:type="xsd:string">BudgetCategory.FlowToolKit__Icon__c</value>
     </values>
     <values>
         <field>FlowToolKit__maxDateFieldName__c</field>

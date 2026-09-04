@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actuals_Mode__c</fullName>
+    <label>Actuals Mode</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Direct</fullName>
+                <default>true</default>
+                <label>Direct</label>
+            </value>
+            <value>
+                <fullName>Allocation</fullName>
+                <default>false</default>
+                <label>Allocation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <description>How the Universal Budget grid captures actuals for this budget. Direct (default): actuals are typed per period into the value's Actual Amount, from the period or from a Funding Disbursement linked to it, and the period's single disbursement Amount is derived from them. Allocation: actuals are entered as Budget Allocation lines per Funding Disbursement (claims), and both the value's Actual Amount and the disbursement Amount are derived from the allocations. Set it on the budget template; budgets started from the template inherit it.</description>
+    <inlineHelpText>Direct: type actuals per period (default). Allocation: enter claim lines per disbursement; actuals and disbursement amounts are rolled up from them.</inlineHelpText>
+</CustomField>

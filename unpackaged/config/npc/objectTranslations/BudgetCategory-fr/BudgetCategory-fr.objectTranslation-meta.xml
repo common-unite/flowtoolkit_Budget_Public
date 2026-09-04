@@ -52,4 +52,19 @@
         <label>Date de début</label>
         <name>%%%NAMESPACED_ORG%%%Start_Date__c</name>
     </fields>
+    <fields>
+        <help>Cochez si chaque ligne financée de cette catégorie doit être accompagnée d'un devis ou d'une estimation.</help>
+        <label>Devis requis</label>
+        <name>%%%NAMESPACED_ORG%%%Requires_Estimate__c</name>
+    </fields>
+    <fields>
+        <help>Cochez si chaque montant réclamé dans cette catégorie doit être accompagné d'un justificatif.</help>
+        <label>Justificatif requis</label>
+        <name>%%%NAMESPACED_ORG%%%Requires_Receipt__c</name>
+    </fields>
+    <fields>
+        <help>Cochez pour les coûts pris en charge par un tiers, par exemple un cofinancement ou une autre subvention. Ils comptent dans le budget total du projet mais ne sont pas réclamés au titre de cette subvention.</help>
+        <label>Non finançable</label>
+        <name>%%%NAMESPACED_ORG%%%Not_Fundable__c</name>
+    </fields>
 </CustomObjectTranslation>

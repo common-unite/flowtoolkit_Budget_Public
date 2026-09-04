@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <description>Demo only (#53 Phase 2): opens the Universal Budget claim sheet for a Funding Disbursement and shows the claim total the component publishes to Flow. Run it with recordId set to a disbursement in Allocation mode.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>claimTotalNumber</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISBLANK({!Claim_Sheet_Component.claimTotal}), 0, VALUE({!Claim_Sheet_Component.claimTotal}))</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Universal Budget Claim Demo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Universal Budget Claim Demo</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Claim_Sheet</name>
+        <label>Claim Sheet</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Claim_Total</targetReference>
+        </connector>
+        <fields>
+            <name>Claim_Sheet_Component</name>
+            <extensionName>%%%NAMESPACED_ORG_OR_C%%%:universalBudget</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>recordId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Claim_Total</name>
+        <label>Claim Total</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Claim_Total_Text</name>
+            <fieldText>&lt;p&gt;This claim totals {!claimTotalNumber}.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Claim_Sheet</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

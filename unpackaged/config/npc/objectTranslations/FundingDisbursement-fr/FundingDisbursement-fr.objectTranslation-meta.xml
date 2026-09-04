@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help>Affiché une fois cette demande soumise. Sa feuille budgétaire devient alors en lecture seule.</help>
+        <label>Demande soumise</label>
+        <name>%%%NAMESPACED_ORG%%%Claim_Submitted__c</name>
+    </fields>
+    <fields>
+        <help>La période budgétaire couverte par ce versement.</help>
+        <label>Période budgétaire</label>
+        <name>%%%NAMESPACED_ORG%%%Budget_Period__c</name>
+    </fields>
+</CustomObjectTranslation>

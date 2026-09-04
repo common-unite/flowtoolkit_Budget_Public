@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requires_Estimate__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <label>Requires Estimate</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Check on categories whose budget lines need a supporting quote or estimate. Mapped as the Category Requires Estimate Field in the Universal Budget configuration. Authoring cells of checked categories show an attachment icon in place of the edit pencil; the icon opens the same line item form, where the file upload field belongs. Leave unchecked on ordinary categories.</description>
+    <inlineHelpText>Check if every funded line in this category needs a quote or estimate attached.</inlineHelpText>
+</CustomField>

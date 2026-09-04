@@ -11,6 +11,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>FlowToolKit__Default_Override_Form__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>FlowToolKit__Delete__c</field>
         <value xsi:type="xsd:boolean">false</value>
     </values>
@@ -47,7 +51,7 @@
   &quot;FlowToolKit__Active__c&quot; : true,
   &quot;FlowToolKit__Description__c&quot; : &quot;Universal Budget demo form: edit budget from the grid.&quot;,
   &quot;FlowToolKit__Form_Object__c&quot; : &quot;%%%NAMESPACED_ORG%%%Budget&quot;,
-  &quot;FlowToolKit__prefill__c&quot; : &quot;{\n  \&quot;attributes\&quot; : {\n    \&quot;type\&quot; : \&quot;Budget\&quot;\n  },\n  \&quot;%%%NAMESPACED_ORG%%%Maximum_Amount__c\&quot; : 50000.0,\n  \&quot;%%%NAMESPACED_ORG%%%Minimum_Amount__c\&quot; : 5000.0,\n  \&quot;Name\&quot; : \&quot;Test\&quot;,\n  \&quot;Status\&quot; : \&quot;Active\&quot;,\n  \&quot;Type\&quot; : \&quot;Program\&quot;\n}&quot;,
+  &quot;FlowToolKit__prefill__c&quot; : &quot;{\n  \&quot;attributes\&quot; : {\n    \&quot;type\&quot; : \&quot;Budget\&quot;\n  },\n  \&quot;%%%NAMESPACED_ORG%%%Actuals_Mode__c\&quot; : \&quot;Direct\&quot;,\n  \&quot;%%%NAMESPACED_ORG%%%Maximum_Amount__c\&quot; : 50000.0,\n  \&quot;%%%NAMESPACED_ORG%%%Minimum_Amount__c\&quot; : 5000.0,\n  \&quot;Name\&quot; : \&quot;Test\&quot;,\n  \&quot;Status\&quot; : \&quot;Active\&quot;,\n  \&quot;Type\&quot; : \&quot;Program\&quot;\n}&quot;,
   &quot;FlowToolKit__type__c&quot; : &quot;form&quot;,
   &quot;FlowToolKit__widthLarge__c&quot; : &quot;12&quot;,
   &quot;FlowToolKit__widthMedium__c&quot; : &quot;12&quot;,
@@ -60,6 +64,7 @@
   &quot;attributes&quot; : {
     &quot;type&quot; : &quot;Budget&quot;
   },
+  &quot;FlowToolKit__Actuals_Mode__c&quot; : &quot;Direct&quot;,
   &quot;FlowToolKit__Maximum_Amount__c&quot; : 50000.0,
   &quot;FlowToolKit__Minimum_Amount__c&quot; : 5000.0,
   &quot;Name&quot; : &quot;Test&quot;,

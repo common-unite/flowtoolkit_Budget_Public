@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Fixed</label>
+    <label>Actual Quantity</label>
     <protected>false</protected>
     <values>
         <field>FlowToolKit__Alternative_Field__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>FlowToolKit__Form_Section__c</field>
-        <value xsi:type="xsd:string">Value_FSbh5a123li3h06o49A4</value>
+        <value xsi:type="xsd:string">Value_FSbi044a1oo3h06o4eAO</value>
     </values>
     <values>
         <field>FlowToolKit__Form__c</field>
@@ -52,26 +52,27 @@
   &quot;attributes&quot; : {
     &quot;type&quot; : &quot;FlowToolKit__Form_Component_Field__c&quot;
   },
-  &quot;FlowToolKit__Form_Section__c&quot; : &quot;%%%NAMESPACED_ORG%%%Value_FSbh5a123li3h06o49A4&quot;,
+  &quot;FlowToolKit__Form_Section__c&quot; : &quot;%%%NAMESPACED_ORG%%%Value_FSbi044a1oo3h06o4eAO&quot;,
   &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Value_Edit&quot;,
-  &quot;FlowToolKit__Label_Rich_Text__c&quot; : &quot;&lt;p&gt;&lt;span class=\&quot;slds-form-element__label slds-text-title_bold\&quot;&gt;{{label}} |&lt;/span&gt;&lt;span&gt;{{helptext}}&lt;/span&gt;&lt;/p&gt;&quot;,
   &quot;FlowToolKit__Object__c&quot; : &quot;BudgetCategoryValue&quot;,
-  &quot;FlowToolKit__booleanType__c&quot; : &quot;attestation&quot;,
-  &quot;FlowToolKit__fieldName__c&quot; : &quot;%%%NAMESPACED_ORG%%%Fixed__c&quot;,
-  &quot;FlowToolKit__labelSize__c&quot; : &quot;slds-text-title_bold&quot;,
-  &quot;FlowToolKit__labelVariant__c&quot; : &quot;none&quot;,
-  &quot;FlowToolKit__position__c&quot; : 3.0,
+  &quot;FlowToolKit__disableHelpText__c&quot; : false,
+  &quot;FlowToolKit__fieldName__c&quot; : &quot;ActualQuantity&quot;,
+  &quot;FlowToolKit__helpTextDisplay__c&quot; : &quot;Below Field&quot;,
+  &quot;FlowToolKit__helpText__c&quot; : &quot;Budgeted: {{$number.Quantity.toFixed(0)}} | Variance: {{$number.VarianceQuantity.toFixed(0)}} &quot;,
+  &quot;FlowToolKit__min__c&quot; : &quot;0&quot;,
+  &quot;FlowToolKit__placeholder__c&quot; : &quot;Optional&quot;,
+  &quot;FlowToolKit__position__c&quot; : 2.0,
   &quot;FlowToolKit__readOnly__c&quot; : false,
   &quot;FlowToolKit__required__c&quot; : false,
-  &quot;FlowToolKit__viewAsPlainText__c&quot; : true,
-  &quot;FlowToolKit__widthLarge__c&quot; : &quot;12&quot;,
-  &quot;FlowToolKit__widthMedium__c&quot; : &quot;12&quot;,
+  &quot;FlowToolKit__triggerFormulaRecalculation__c&quot; : true,
+  &quot;FlowToolKit__widthLarge__c&quot; : &quot;5&quot;,
+  &quot;FlowToolKit__widthMedium__c&quot; : &quot;5&quot;,
   &quot;FlowToolKit__widthSmall__c&quot; : &quot;12&quot;
 }</value>
     </values>
     <values>
         <field>FlowToolKit__fieldName__c</field>
-        <value xsi:type="xsd:string">BudgetCategoryValue.%%%NAMESPACED_ORG%%%Fixed__c</value>
+        <value xsi:type="xsd:string">BudgetCategoryValue.ActualQuantity</value>
     </values>
     <values>
         <field>FlowToolKit__maxDateFieldName__c</field>
@@ -83,7 +84,7 @@
     </values>
     <values>
         <field>FlowToolKit__position__c</field>
-        <value xsi:type="xsd:double">3.0</value>
+        <value xsi:type="xsd:double">2.0</value>
     </values>
     <values>
         <field>FlowToolKit__readOnly__c</field>

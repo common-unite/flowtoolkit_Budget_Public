@@ -37,8 +37,9 @@
     <apiVersion>66.0</apiVersion>
     <description>When an application is created for a funding opportunity that carries a budget template, clones the template (budget, categories, periods, and values) through the Flow Tool Kit Clone Budget action and stamps the new budget on the application. Applications created with a budget already set, or for opportunities without a template, are skipped. A clone failure never blocks the application - the action returns Is Success false and the flow simply skips the stamp.</description>
     <environments>Default</environments>
+    <isOverridable>true</isOverridable>
     <interviewLabel>IndividualApplication (After Create → Clone Template Budget) {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>IndividualApplication (After Create → Clone Template Budget)</label>
+    <label>IndividualApplication (After Create → Clone Template Budget) | Overridable</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

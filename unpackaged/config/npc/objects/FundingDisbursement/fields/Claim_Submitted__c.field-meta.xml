@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claim_Submitted__c</fullName>
+    <externalId>false</externalId>
+    <formula>NOT(ISPICKVAL(Status, "Scheduled"))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Claim Submitted</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+    <description>Demo lock for the Universal Budget grid: true once the disbursement has left the Scheduled status. Mapped as the Disbursement Submitted Field; the sheet opened from this disbursement renders read-only when it is true. Every subscriber writes its own formula over its own status model.</description>
+    <inlineHelpText>Shown once this claim has been submitted. Its budget sheet is read-only from then on.</inlineHelpText>
+</CustomField>

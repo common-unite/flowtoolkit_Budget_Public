@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <label>Compte</label>
-        <name>%%%NAMESPACED_ORG%%%Account__c</name>
-    </fields>
-    <fields>
         <label>Nom d'API qualifié du formulaire de budget</label>
         <name>%%%NAMESPACED_ORG%%%Budget_FormQualifiedApiName__c</name>
     </fields>
@@ -35,5 +31,28 @@
     <fields>
         <label>Seuil d'écart</label>
         <name>%%%NAMESPACED_ORG%%%Variance_Threshold__c</name>
+    </fields>
+    <fields>
+        <help>Affiché lorsqu'un élément de ce budget dépasse ses limites. Ouvrez le budget pour voir ce qui demande attention.</help>
+        <label>Points à vérifier</label>
+        <name>%%%NAMESPACED_ORG%%%Has_Violations__c</name>
+    </fields>
+    <fields>
+        <help>Combien d'éléments demandent actuellement attention dans ce budget.</help>
+        <label>Nombre de points à vérifier</label>
+        <name>%%%NAMESPACED_ORG%%%Violation_Count__c</name>
+    </fields>
+    <fields>
+        <help>Ce qui demande attention dans ce budget, un élément par ligne.</help>
+        <label>Détail des points à vérifier</label>
+        <name>%%%NAMESPACED_ORG%%%Violation_Details__c</name>
+    </fields>
+    <fields>
+        <label>Mode de saisie des réalisations</label>
+        <name>%%%NAMESPACED_ORG%%%Actuals_Mode__c</name>
+    </fields>
+    <fields>
+        <label>Formulaire de ligne de demande</label>
+        <name>%%%NAMESPACED_ORG%%%Allocation_FormQualifiedApiName__c</name>
     </fields>
 </CustomObjectTranslation>

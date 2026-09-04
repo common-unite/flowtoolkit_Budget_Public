@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Budget_Period__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Budget Period</label>
+    <referenceTo>BudgetPeriod</referenceTo>
+    <relationshipLabel>Funding Disbursements</relationshipLabel>
+    <relationshipName>Funding_Disbursements</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+    <description>The budget period this disbursement pays against. Mapped as the Disbursement Period Lookup in the Universal Budget configuration: opening the grid from a disbursement walks this lookup to the period and its budget. A disbursement without it cannot open the grid and shows the no-access illustration.</description>
+    <inlineHelpText>The budget period this payment covers.</inlineHelpText>
+</CustomField>

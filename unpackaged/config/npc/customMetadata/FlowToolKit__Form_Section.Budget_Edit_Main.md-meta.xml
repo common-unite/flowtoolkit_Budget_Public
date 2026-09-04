@@ -35,7 +35,7 @@
   &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Budget_Edit&quot;,
   &quot;FlowToolKit__enableAccordion__c&quot; : true,
   &quot;FlowToolKit__marginTop__c&quot; : &quot;slds-m-top_small&quot;,
-  &quot;FlowToolKit__position__c&quot; : 6.0,
+  &quot;FlowToolKit__position__c&quot; : 5.0,
   &quot;FlowToolKit__sectionType__c&quot; : &quot;inputSection&quot;,
   &quot;FlowToolKit__showHeader__c&quot; : true,
   &quot;FlowToolKit__title__c&quot; : &quot;Advanced Edit Form Configuration&quot;,
@@ -54,6 +54,6 @@
     </values>
     <values>
         <field>FlowToolKit__position__c</field>
-        <value xsi:type="xsd:double">6.0</value>
+        <value xsi:type="xsd:double">5.0</value>
     </values>
 </CustomMetadata>
