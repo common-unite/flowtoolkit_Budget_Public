@@ -10,8 +10,8 @@
 ## Features
 
 * [The Budget Grid & Value Modes](features/budget-grid-and-modes.md)
+* [Claims And Allocation Mode](features/claims-and-allocation-mode.md)
 * [Limits, Validation & Reporting](features/limits-validation-and-reporting.md)
-* [Claims & Allocation Mode](features/claims-and-allocation-mode.md)
 * [Templates & Cloning](features/templates-and-cloning.md)
 
 ## Configuration
