@@ -35,6 +35,8 @@ whenever a value is created, changed or deleted: a checkbox (any breach?), a cou
 carrying one breached limit per line in your org's default language, worded exactly like the Review
 issues list. Removing the row that caused a breach clears the flag.
 
+Category and period names in the stamp are the stored values, not picklist labels: the stamp is one language, the org default, so a picklist-named category appears by its API value even when the saving user works in another language (see [Translating configured text](../configuration/mapping-your-data-model.md#translating-configured-text)).
+
 The package never blocks anything with these fields - that is the point. They turn violations into
 plain data, so **you** decide what "not allowed" means with the tools you already have:
 

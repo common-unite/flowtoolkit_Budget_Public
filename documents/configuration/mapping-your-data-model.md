@@ -119,6 +119,39 @@ Structure editing happens through Flow Tool Kit **forms**, so you control exactl
 
 See [Forms, Flow & Experience Cloud](../integrations/forms-flow-and-experience-cloud.md) for building those forms.
 
+## Translating configured text
+
+Every mapping the grid shows as text is read with `toLabel()` when the mapped field is a picklist, so
+Translation Workbench translates it for each user. That is the name and description mappings on every
+role: `Budget_Name_Field__c`, `Category_Name_Field__c`, `Period_Name_Field__c`, `Value_Name_Field__c`,
+`Disbursement_Name_Field__c`, and the three description fields. Text, text area and formula fields read
+as they are. The grid, the reporting sheet and the claim sheet all inherit the label.
+
+The pattern this is built for: a **Category picklist** on the category object with a translation per
+value, mapped as `Category_Name_Field__c`, plus your own record-triggered Flow that copies the picklist
+value into the record's Name so list views and reports still read well. The package never writes the
+picklist; your Flow owns the Name.
+
+![Category names read from a picklist, English user](../screenshots/62-picklist-labels-en-categories.png)
+
+![The same categories for a French user](../screenshots/62-picklist-labels-fr-categories.png)
+
+What stays untranslated, on purpose:
+
+- **Mappings the package branches on** are always read by value: `Category_Mode_Field__c`,
+  `Budget_Actuals_Mode_Field__c`, `Category_Line_Item_Mode_Field__c`, the submitted, fixed, not-fundable,
+  requires-estimate and requires-receipt flags. A translated mode would break the branch that reads it.
+  `Category_Icon_Field__c` is a key the grid resolves to an icon, not text, so it is read by value too.
+- **Sorting.** SOQL cannot order by a label, so a picklist name sorts in the picklist's own definition
+  order: the order you arrange the values in Setup, the same for every language. Map a sort field when you
+  want an explicit order.
+- **The violation stamp** (`Budget_Violation_Details_Field__c`) names categories and periods by their stored
+  value. The stamp is written in the org default language for the grantmaker, reports and Flows to read,
+  and a picklist label can only be fetched in the saving user's language, so the value keeps it consistent.
+- **A field mapped as both a display and a logic mapping** is read by value.
+- **`Value_Name_Field__c` as a picklist is display-only.** Line names on the grid are typed free text, so a
+  picklist there shows its label but cannot be edited from the grid; use the value edit form for that.
+
 ## Tips
 
 - Start from a bundled config and change the object and field names rather than building blank.

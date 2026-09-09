@@ -347,10 +347,10 @@ orgs:
             config_file: orgs/dev.json
             days: 30
             namespaced: True
-        # Sprint org: #50 budget date mapping -> #47 violation state -> #46 attachments.
-        # Grantmaking shape because every issue in the sprint is exercised on the NPC
-        # data model. cci flow run npc_dev_org --org sprint_2026-08-grantmaking
-        sprint_2026-08-grantmaking:
+        # Sprint org: #62 picklist display fields read with toLabel(). Grantmaking shape
+        # so the CCS story (BudgetCategory picklist + the bundle's French translations)
+        # replays end to end. cci flow run npc_dev_org --org sprint_2026-09-09
+        sprint_2026-09-09:
             config_file: orgs/npc.json
             days: 30
             namespaced: True
