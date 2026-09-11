@@ -1,32 +1,40 @@
 {
-  "orgName": "Flow Tool Kit: Budget - NPC Dev Org",
-  "edition": "Developer",
-  "adminEmail": "bobby@common-unite.com",
+  "orgName": "Flow Tool Kit - NPC Dev Org",
+  "edition": "Enterprise",
   "hasSampleData": false,
   "features": [
-    "PlatformCache",
-    "ProviderFreePlatformCache",
+    "AccountingSubledgerGrowthEdition",
+    "AnalyticsQueryService",
     "ArcGraphCommunity",
     "Assessments",
     "BusinessRulesEngine",
     "Communities",
     "ContactsToMultipleAccounts",
+    "CustomerCommunityPlus",
     "DataProcessingEngine",
     "DecisionTable",
     "DefaultWorkflowUser",
     "DocGenInd",
     "DocumentChecklist",
     "EnableSetPasswordInApi",
+    "ExperienceBundle",
     "Fundraising",
     "Grantmaking",
     "IndustriesActionPlan",
+    "IndustriesSalesExcellenceAddOn",
+    "IndustriesServiceExcellenceAddOn",
     "MarketingUser",
     "NonprofitCloudCaseManagementUser",
     "OmnistudioDesigner",
     "OmnistudioRuntime",
     "OutcomeManagement",
+    "PartnerCommunity",
     "PersonAccounts",
+    "PlatformCache",
     "ProgramManagement",
+    "ProviderFreePlatformCache",
+    "PublicSector",
+    "PublicSectorAccess",
     "StateAndCountryPicklist"
   ],
   "settings": {
@@ -64,11 +72,20 @@
       "enableCarePlansPreference": true,
       "enableGrantmaking": true,
       "enableGroupMembershipPref": true,
-      "enableOutcomes": true
+      "enableOutcomes": true,
+      "enableCompliantDataSharingForAccount": true,
+      "enableCompliantDataSharingForBudget": true,
+      "enableCompliantDataSharingForFundingAward": true,
+      "enableCompliantDataSharingForFundingOpportunity": true,
+      "enableCompliantDataSharingForIndividualApplication": true,
+      "enableCompliantDataSharingForIndividualApplicationTask": true,
+      "enableFundraising": true,
+      "enableGiftEntryGrid": true
     },
     "communitiesSettings": {
       "enableCommunityWorkspaces": true,
-      "enableNetworksEnabled": true
+      "enableNetworksEnabled": true,
+      "enableOotbProfExtUserOpsEnable": true
     },
     "experienceBundleSettings": {
       "enableExperienceBundleMetadata": true

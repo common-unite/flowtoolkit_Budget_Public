@@ -91,6 +91,18 @@ Any other data model works the same way: map your objects and fields on a
 > `sf project deploy` will NOT resolve the tokens - use the CumulusCI deploy
 > task as shown, or a MetaDeploy plan.
 
+### After an upgrade: the Budget Configuration layout
+
+A package upgrade never changes a page layout in your org, so the **Budget Configuration**
+layout keeps the fields it had when the package was first installed. Every mapping added since
+(0.7: actuals mode, window dates, the violation fields, the estimate and receipt uploads, the
+category flags, the disbursement and allocation roles; 0.8: none new) has to be placed on the
+layout by hand, or the record cannot be configured through the UI. Compare your layout with the
+package's `Budget_Configuration__mdt-Budget Configuration Layout` after each upgrade. Deploying
+the package layout under the namespaced name creates a second layout rather than updating the
+installed one; edit the installed layout in Setup, or update it in place through the Tooling API
+(`Layout.Metadata.layoutSections`).
+
 ## Permission sets
 
 | Set | Grants |

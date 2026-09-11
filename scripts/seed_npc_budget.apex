@@ -6,11 +6,21 @@ String seedOpportunityName = 'Riverside Community Garden Grants 2026';
 String seedEmptyOpportunityName = 'Riverside Expansion Fund 2027';
 Set<String> seedOpportunityNameSet = new Set<String>{ seedOpportunityName, seedEmptyOpportunityName };
 String seedAwardName = 'Riverside Community Garden - Award';
+String seedAuthorizationTypeName = 'Grant Application (demo)';
 
 // clone budgets share the template's name, so this cleanup also collects clones from demo runs
 List<Budget> existingBudgets = [SELECT Id FROM Budget WHERE Name = :seedBudgetName];
 delete [SELECT Id FROM IndividualApplication WHERE BudgetId IN :existingBudgets OR FundingOpportunity.Name IN :seedOpportunityNameSet];
+// ApplicationForm only exists where the Public Sector features are on (#67), so every reference to it in
+// this script is dynamic - an org without the object seeds normally instead of failing to compile.
+SObjectType applicationFormType = Schema.getGlobalDescribe().get('ApplicationForm');
+Set<Id> seedOpportunityIdSet = new Map<Id, FundingOpportunity>([SELECT Id FROM FundingOpportunity WHERE Name IN :seedOpportunityNameSet]).keySet();
+// application forms go before the opportunities they reference; a failed clone leaves no budget, so match on both
+if (applicationFormType != null) delete Database.query('SELECT Id FROM ApplicationForm WHERE BudgetId IN :existingBudgets OR ReferenceRecordId IN :seedOpportunityIdSet');
 delete [SELECT Id FROM FundingOpportunity WHERE Name IN :seedOpportunityNameSet];
+// the licence type the applications reference goes after them, and only where the object exists
+SObjectType seedAuthorizationTypeType = Schema.getGlobalDescribe().get('RegulatoryAuthorizationType');
+if (seedAuthorizationTypeType != null) delete Database.query('SELECT Id FROM RegulatoryAuthorizationType WHERE Name = :seedAuthorizationTypeName');
 // allocations reference both the budget and the disbursement: they go before either parent
 delete [SELECT Id FROM BudgetAllocation WHERE BudgetId IN :existingBudgets OR FundingDisbursement.FundingAward.Name = :seedAwardName];
 delete [SELECT Id FROM FundingDisbursement WHERE FundingAward.Name = :seedAwardName];
@@ -192,9 +202,10 @@ List<BudgetCategoryValue> budgetCategoryValues = new List<BudgetCategoryValue>{
 };
 insert budgetCategoryValues;
 
-// two claims on Year 1 and an advance on Year 2 (#53); the award is only there because FundingAwardId is required. Year 1 currency
+// two claims on Year 1 and an advance on Year 2 (#53). The award also carries the budget so the Funding Award
+// demo page (#67) opens on the awarded budget instead of the empty state. Year 1 currency
 // actuals are NOT seeded: the actuals sync derives them from the claim lines below (Director 20,000, Supplies 2,000; Claim 1 22,000)
-FundingAward fundingAward = new FundingAward(Name = seedAwardName);
+FundingAward fundingAward = new FundingAward(Name = seedAwardName, BudgetId = budget.Id);
 insert fundingAward;
 List<FundingDisbursement> disbursements = new List<FundingDisbursement>{
     new FundingDisbursement(FundingAwardId = fundingAward.Id, DisbursementName = 'Claim 1', Status = 'Scheduled', Amount = 0,
@@ -225,5 +236,28 @@ FundingOpportunity fundingOpportunity = new FundingOpportunity(
 FundingOpportunity emptyOpportunity = new FundingOpportunity(Name = seedEmptyOpportunityName);
 insert new List<FundingOpportunity>{ fundingOpportunity, emptyOpportunity };
 
+// One application per object so both demo record pages and both clone flows are exercised in a fresh org
+// (#67). The opportunity keeps its template, so creating another application by hand still demos the clone
+// live. Category is an unrestricted picklist, so Grant Application is accepted even in an org whose values
+// read License / Permit / Benefit (the shape IndividualApplication takes when the Public Sector features
+// are on). That shape also demands a licence type, which is a RegulatoryAuthorizationType record - set
+// dynamically because neither the field nor the object exists in a plain Grantmaking org.
+IndividualApplication individualApplication = new IndividualApplication(
+    FundingOpportunityId = fundingOpportunity.Id,
+    Category = 'Grant Application',
+    Status = 'Submitted',
+    AppliedDate = System.now()
+);
+SObjectType authorizationTypeType = Schema.getGlobalDescribe().get('RegulatoryAuthorizationType');
+Map<String, Schema.SObjectField> individualApplicationFieldMap = Schema.getGlobalDescribe().get('IndividualApplication').getDescribe().fields.getMap();
+if (authorizationTypeType != null && individualApplicationFieldMap.containsKey('LicenseTypeId')) {
+    SObject authorizationType = authorizationTypeType.newSObject();
+    authorizationType.put('Name', seedAuthorizationTypeName);
+    insert authorizationType;
+    individualApplication.put('LicenseTypeId', authorizationType.Id);
+}
+insert individualApplication;
+
 System.debug('Seeded Budget ' + budget.Id + ' with ' + budgetPeriods.size() + ' periods, '
-    + budgetCategories.size() + ' categories, ' + budgetCategoryValues.size() + ' values, ' + disbursements.size() + ' disbursements on Year 1, and Funding Opportunity ' + fundingOpportunity.Id + '.');
+    + budgetCategories.size() + ' categories, ' + budgetCategoryValues.size() + ' values, ' + disbursements.size() + ' disbursements on Year 1, Funding Opportunity ' + fundingOpportunity.Id
+    + ', and one Individual Application. Application Form seeding is demo-only: scripts/seed_npc_demo_application_form.apex.');

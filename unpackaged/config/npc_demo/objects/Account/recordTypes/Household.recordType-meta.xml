@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Household</fullName>
+    <active>true</active>
+    <description>Demo-only. Nonprofit Cloud models a household as a business account that people relate to through Account Contact Relations, which is how a configured client org does it. A fresh scratch org ships only Default, Business Account and Person Account.</description>
+    <label>Household</label>
+</RecordType>

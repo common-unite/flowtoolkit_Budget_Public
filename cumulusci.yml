@@ -245,6 +245,11 @@ flows:
         steps:
             1:
                 flow: install_npc
+            # Shared NPC platform layer, identical to what base and the Stripe Connector
+            # run. Supplies the NPC licenses, metadata, sample data and the Grantmaking
+            # Portal that the demo seeds below build on. See cUnite_FormBuilder#659.
+            1.1:
+                flow: formbuilder:npc_org_setup
             # DEMO ONLY - deliberately NOT in unpackaged/config/npc, because that path
             # is deployed to CLIENT orgs by install_npc_client and clients place the
             # component themselves (they own their page layouts; the NPC Client Org
@@ -259,19 +264,56 @@ flows:
                     unmanaged: True
                 ui_options:
                     name: "Deploy the demo record pages and the claim demo flow"
-            # Grantmaking Experience Cloud portal (for testing the component in EC)
-            2:
-                task: create_community
+            # Demo-only access to the newer grantmaking application objects (#67). Kept out of
+            # unpackaged/config/npc because ApplicationForm needs the Public Sector features and a
+            # client org without them would fail the whole client bundle deploy.
+            1.6:
+                task: assign_permission_sets
                 options:
-                    template: Grantmaking
-                    name: Grantmaking Portal
-                    url_path_prefix: grantmaking
-                ignore_failure: True
-            3:
-                task: publish_community
+                    api_names: Universal_Budget_Demo_Application_Form
+                ui_options:
+                    name: "Assign the demo Application Form permission set"
+            # AFTER the demo bundle, never inside install_npc's seed: the clone flow that gives this
+            # application form its budget ships in npc_demo, so seeding earlier creates a budgetless record.
+            1.7:
+                task: execute_anon
                 options:
-                    name: Grantmaking Portal
-                ignore_failure: True
+                    path: scripts/seed_npc_demo_application_form.apex
+                ui_options:
+                    name: "Seed the demo Application Form"
+            # The party side of the demo: grantee organisation, its staff, a household and the people in
+            # it, wired into the award and both application records. Needs the Household record type that
+            # ships in npc_demo, so it runs after the deploy like the application form seed.
+            1.8:
+                task: execute_anon
+                options:
+                    path: scripts/seed_npc_demo_party.apex
+                ui_options:
+                    name: "Seed the demo party data (accounts, household, people)"
+            # Experience Cloud users for the four demo people. Customer Community Plus is role-based, so
+            # the script gives the running user a role first and asks to be run again; the flow runs it
+            # twice for that reason. Needs enableOotbProfExtUserOpsEnable, which orgs/npc.json now sets.
+            1.9:
+                task: execute_anon
+                options:
+                    path: scripts/seed_npc_demo_portal_users.apex
+                ui_options:
+                    name: "Create the demo portal users (role pass)"
+            1.95:
+                task: execute_anon
+                options:
+                    path: scripts/seed_npc_demo_portal_users.apex
+                ui_options:
+                    name: "Create the demo portal users"
+            # Grant lifecycle action plan templates. A grantmaking org runs its process on these and a
+            # fresh scratch org has none, so without them the demo shows a budget with no process around it.
+            1.96:
+                task: execute_anon
+                options:
+                    path: scripts/seed_npc_demo_action_plans.apex
+                ui_options:
+                    name: "Seed the grant lifecycle action plan templates"
+            # The Grantmaking Portal is created by formbuilder:npc_org_setup at step 1.1.
 
     #   cci flow run ofm_dev_org --org ofm
     ofm_dev_org:
@@ -295,6 +337,19 @@ flows:
                 task: github_copy_subtree
                 options:
                     tag_name: "latest"
+
+sources:
+    # Shared NPC platform layer. formbuilder:npc_org_setup builds every NPC org the
+    # same way: features, permission sets, NPC metadata, Grantmaking sample data,
+    # Fundraising demo data and the Grantmaking Portal. See cUnite_FormBuilder#659.
+    # branch: master is deliberate. CumulusCI's default resolution strategy is
+    # "production", which resolves a source to the latest RELEASE TAG, not the default
+    # branch. Scratch org tooling is not packaged metadata and must not wait for a
+    # package release, so this tracks master. Without it, npc_org_setup resolves to
+    # whatever shipped in the last base release and silently runs an older org setup.
+    formbuilder:
+        github: 'https://github.com/common-unite/cUnite_FormBuilder'
+        branch: master
 
 tasks:
     export_form:
@@ -347,10 +402,11 @@ orgs:
             config_file: orgs/dev.json
             days: 30
             namespaced: True
-        # Sprint org: #62 picklist display fields read with toLabel(). Grantmaking shape
-        # so the CCS story (BudgetCategory picklist + the bundle's French translations)
-        # replays end to end. cci flow run npc_dev_org --org sprint_2026-09-09
-        sprint_2026-09-09:
+        # Sprint 2026-09-09-demo: NPC demo org, form-submission conversion rules,
+        # MetaDeploy plans, and the NPC/OFM bundle token bugs. Grantmaking shape
+        # because the demo org and the conversion work both need it.
+        # cci flow run npc_dev_org --org sprint_2026-09-09-demo
+        sprint_2026-09-09-demo:
             config_file: orgs/npc.json
             days: 30
             namespaced: True
