@@ -35,13 +35,25 @@ Use the outputs to gate navigation — for example, keep a grantee on the budget
 
 You can also set **brand** and **complementary** colors on the component to match your flow or site.
 
+### Filtering categories per screen
+
+Two more inputs, **Category Filter Field** and **Category Filter Values**, hide categories on one screen without changing what the package counts. Pick a picklist or text field on your category object (a *Payment Type* with *Advance* and *Reimbursable*, say) and choose the values to keep, and the screen shows only those categories. A multi-select picklist keeps a category when any of its selected values is among the chosen ones; a text field matches exactly. This is how one budget can offer an advance screen and a reimbursement screen.
+
+In Flow Builder the component's property editor does the picking for you: the field list comes from the category object your Budget Configuration maps, and the values are that field's active values, shown as checkboxes once a picklist is chosen. Choose a text field and the values input becomes a text box instead: type the values separated by semicolons. Bind the values to a Flow variable instead (the disbursement's own type, for example) and one screen serves both payment types. On a record page the same two properties are typed as text: the field API name, and the values separated by semicolons. On an Experience Cloud page the same property editor opens from the component's **Configure Budget Properties** setting, minus the Flow-variable bindings.
+
+What the filter never does:
+
+- **It never changes the money.** Value actuals, disbursement amounts, *Prior claimed* and *Remaining* are derived on the server from every record, so an advance sheet and a reimbursement sheet on the same period still share one *Remaining*. To take a category out of the totals, use **Not Fundable** instead.
+- **Blank means everything.** No field, or a field with nothing ticked, shows every category exactly as before.
+- **Violations follow the rows on screen.** The **Has Violations** and **Violation Count** outputs and the grant-to-date strip reflect the visible categories only. A submit Flow that needs the whole budget's state runs an unfiltered screen or reads the stamped violation fields.
+
 ## Experience Cloud
 
 The component runs in Experience Cloud sites, so grantees can view and work their budget in a portal.
 
 - On a record page, it binds `{!recordId}` from the page automatically. On a standalone page, set the Record Id to a specific budget.
 - **Grantees** (portal members) see a focused grid: no **Add category**, **Add period**, **Edit category** or **Edit period** controls, because those are gated by the manage permission. They can still enter amounts and add detail to line items, and **Edit budget** stays available to them on purpose, so a grantee can fill in the budget's own fields, notes and narrative through your budget form without touching the structure. Put only the fields you want a grantee to edit on that form.
-- Set the brand color to match your site.
+- **Configure Budget Properties** opens the same property editor Flow Builder uses: pick the category filter field and values, and set the brand and complementary colors. Leave the colors blank to inherit the site's brand.
 - On an Allocation-mode budget, portal grantees work their **claim sheet** from a disbursement page or a Flow: give them create and edit on the allocation object, nothing more. The package writes the disbursement amount and the value actual for them.
 
 ### Guest interactive preview

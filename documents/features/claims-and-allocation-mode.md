@@ -54,6 +54,8 @@ It never writes the disbursement's status or anything else about payment, never 
 
 Only **fundable** categories reach a disbursement amount. Mark the exceptions (a match, other funding sources) with the mapped **Not Fundable** flag; they stay on the authoring grid and leave the reporting and claim sheets.
 
+To *show* fewer categories on one screen without taking them out of the money, for example an advance screen next to a reimbursement screen, use the screen's **category filter** instead; see [Filtering categories per screen](../integrations/forms-flow-and-experience-cloud.md#filtering-categories-per-screen).
+
 **Every allocation counts.** There is no "included" flag. A claim that is cancelled or returned is cleared by your own Flow on the disbursement, minutes of admin work, and the sync follows.
 
 ## Locks and warnings
