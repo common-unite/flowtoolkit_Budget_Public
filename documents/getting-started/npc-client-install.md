@@ -104,6 +104,11 @@ template-driven overrides.
 | Form (Universal Budget NPC Manager) | Staff who build and maintain budget structure |
 | Form (Universal Budget Template Manager) | Grants the *Configure Budget Templates* permission that reveals structure editing |
 
+If you build your own permission sets instead, give everyone who saves on the grid (grantees included) **edit** on
+the value's grouping field (`BudgetCategoryValue.Grouping_Identifier__c`). The grid writes it on every save to keep a
+line's cells together; without edit access, entering an amount, adding a line and claiming fail with a
+*fields being inaccessible* error.
+
 ## Verify
 
 - Open a Budget record with the component placed. The grid renders with categories and periods.

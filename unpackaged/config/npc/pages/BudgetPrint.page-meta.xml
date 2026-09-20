@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>Prints a budget as a PDF: the Budget Sheet table under the budget's name and description. Add it to the Budget record page, or pass the page name to the Generate PDF action to save it as a file. Starting point only; the header, logo and page furniture are yours to change.</description>
+    <label>Budget Print</label>
+</ApexPage>

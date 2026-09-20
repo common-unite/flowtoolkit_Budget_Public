@@ -104,6 +104,11 @@
         <editable>false</editable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>Budget.Claim_Across_Periods__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>Budget.Requested_Amount__c</field>
         <readable>true</readable>
         <editable>false</editable>
@@ -226,7 +231,7 @@
     <fieldPermissions>
         <field>BudgetCategoryValue.Grouping_Identifier__c</field>
         <readable>true</readable>
-        <editable>false</editable>
+        <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
         <field>FundingDisbursement.Budget_Period__c</field>
@@ -284,4 +289,16 @@
         <viewAllRecords>false</viewAllRecords>
         <modifyAllRecords>false</modifyAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>BudgetPeriodPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>BudgetPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>FundingDisbursementPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
 </PermissionSet>

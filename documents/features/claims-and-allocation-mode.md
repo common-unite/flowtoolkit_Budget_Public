@@ -33,7 +33,7 @@ Allocation requires the allocation role. A budget set to Allocation under a conf
 
 ## Reading a claim sheet
 
-Every row carries four figures: **Budgeted**, **Prior claimed**, **This claim** (the only editable one), and **Remaining**. **Prior claimed** is the sum of this value's allocations on *other* disbursements. It is scoped to the period the disbursement pays against, like Budgeted and Remaining beside it, so it reads blank when a period carries a single claim and fills once a second claim is filed against the same period. Claims in other periods appear in the grant-to-date strip, not in this column. Category, period and grand totals carry the same four figures.
+Every row carries four figures: **Budgeted**, **Prior claimed**, **This claim** (the only editable one), and **Remaining**. **Prior claimed** is the sum of this value's allocations on *other* disbursements. It is scoped to the period the disbursement pays against, like Budgeted and Remaining beside it, so it reads blank when a period carries a single claim and fills once a second claim is filed against the same period. Claims in other periods appear in the grant-to-date strip, not in this column. A category in line-item mode gets a Total row carrying the same four figures; a category with a single row does not, since its Total would repeat it. The sheet's grand total always shows.
 
 - A line is created the first time a non-blank claim is typed; later edits update the same row. Clearing a cell writes zero and keeps the row. The grid never deletes an allocation.
 - Quantity-mode lines claim a **quantity**; percent-mode lines cannot be claimed and render read-only.
@@ -42,6 +42,43 @@ Every row carries four figures: **Budgeted**, **Prior claimed**, **This claim** 
 - Claim a figure on such a line and leave the receipt off, and the icon turns **red** and the sheet raises a grouped advisory naming the lines that owe one. A line budgeted but not yet claimed is not asked for anything.
 - The **grant-to-date strip** reads budgeted vs **claimed** across every claim on the budget, and it follows what you type.
 - A claim sheet on a period with nothing claimable (every row unbudgeted or percent-only) explains itself: *Nothing in this period can be claimed against.*
+
+## Claiming across periods
+
+By default every figure on a claim sheet belongs to the claim's period. A budget can instead measure each line
+across the whole grant: map `Budget_Claim_Across_Periods_Field__c` to a checkbox on the budget (the NPC bundle
+ships **Claim Across Periods** and maps it), or to a formula over your own program, stage or template fields.
+Blank or unchecked keeps the period scope, so existing budgets do not change.
+
+When it is checked:
+
+- **Budgeted**, **Prior claimed** and **Remaining** each show two lines: the claim's period on top, at the
+  usual size, and the grant total below in smaller text. The column headers read *Period / Total*. The grant
+  total of Prior claimed is every claim on the line in any period except this disbursement's, and each
+  Remaining line is its own Budgeted minus its own Prior claimed minus this claim, so both lines add up on
+  their own. Quantity lines sum their quantities; percent lines keep a single period figure and still cannot
+  be claimed.
+- Each Remaining line turns red on its own. A claim that draws ahead of the period's plan reads red on top and
+  fine below, which is exactly what a reviewer checks before approving.
+- Category totals and the sheet total stack the same way; the category limit advisory reads the grant totals.
+  The reviewer and the grantee see the same numbers; there is no switch on the sheet.
+- The claim still has a period, from the disbursement, and the sheet still opens on it. A category shows when
+  its own start and end dates cover that period and it holds a value in any period; a line shows when it has a
+  value in any period. Dates only limit what the sheet shows: the sheet total always includes every fundable
+  category, shown or not, so it agrees with the grant-to-date strip.
+- A line with nothing planned in the claim's period can still be claimed. Saving the claim first adds that line
+  to the period at zero (same grouping, and the line name on a line-item category), then attaches the claim, so
+  every claim stays reportable by period. Nothing is added until a figure is typed, and a second claim reuses
+  the value instead of adding another.
+- A zero value changes no budget total, so it never raises a budget limit or trips a period minimum.
+
+Change a disbursement's budget period only before it has claim lines. Its existing lines stay on the old period's
+values, so the new sheet counts them as neither This claim nor Prior claimed and the grant Remaining reads too high,
+while the disbursement's Amount still includes them. Move or clear the lines first.
+
+How the period is chosen stays your decision: your process can pick it for the grantee (the current period,
+the disbursement's scheduled period) or let the grantee choose the period in which the expenses occurred.
+Drawing ahead is always a reviewer's call; the package warns and never blocks.
 
 ## What the package writes, and what it never writes
 
@@ -76,6 +113,8 @@ To *show* fewer categories on one screen without taking them out of the money, f
 The bundle in `unpackaged/config/npc` ships the mapping, the fields and the Flows. After the [client install](../getting-started/npc-client-install.md#post-install-configuration):
 
 1. Set **Actuals Mode** to Allocation on the budget template so cloned budgets inherit it.
+   Check **Claim Across Periods** there too if grantees should claim against the whole grant; see
+   [Claiming across periods](#claiming-across-periods).
 2. Create disbursements from your own Flow (for example one open claim per period) with **Budget Period** set; without it the disbursement cannot open the grid.
 3. Give grantees **create and edit** on `BudgetAllocation`; the package writes the disbursement amount and the value actual for them.
 4. Put the **Funding Disbursements** related list on the Budget Period layout so a period page lists its claims.

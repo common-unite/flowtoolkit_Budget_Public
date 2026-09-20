@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>FlowToolKit__conditionalLogic__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Allocation_FL_Require_Receipts</value>
     </values>
     <values>
         <field>FlowToolKit__config__c</field>
@@ -35,6 +35,7 @@
   &quot;FlowToolKit__Divider_Style__c&quot; : &quot;bookmark&quot;,
   &quot;FlowToolKit__Form__c&quot; : &quot;%%%NAMESPACED_ORG%%%Allocation_Edit&quot;,
   &quot;FlowToolKit__Header_Display__c&quot; : &quot;Divider&quot;,
+  &quot;FlowToolKit__conditionalLogic__c&quot; : &quot;%%%NAMESPACED_ORG%%%Allocation_FL_Require_Receipts&quot;,
   &quot;FlowToolKit__iconName__c&quot; : &quot;utility:upload&quot;,
   &quot;FlowToolKit__position__c&quot; : 2.0,
   &quot;FlowToolKit__sectionType__c&quot; : &quot;inputSection&quot;,

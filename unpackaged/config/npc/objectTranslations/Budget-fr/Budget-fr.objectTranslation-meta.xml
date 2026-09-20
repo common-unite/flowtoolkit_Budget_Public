@@ -52,6 +52,11 @@
         <name>%%%NAMESPACED_ORG%%%Actuals_Mode__c</name>
     </fields>
     <fields>
+        <help>Coché : Budgété, Déjà demandé et Restant affichent la période de la demande, avec en dessous le total de toutes les périodes, de sorte qu&apos;une demande peut porter sur des montants prévus pour n&apos;importe quelle période. Non coché : ils n&apos;affichent que la période de la demande. Une demande est toujours enregistrée dans sa propre période. Mode Allocation uniquement.</help>
+        <label>Demandes sur toutes les périodes</label>
+        <name>%%%NAMESPACED_ORG%%%Claim_Across_Periods__c</name>
+    </fields>
+    <fields>
         <label>Formulaire de ligne de demande</label>
         <name>%%%NAMESPACED_ORG%%%Allocation_FormQualifiedApiName__c</name>
     </fields>

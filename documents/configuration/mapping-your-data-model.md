@@ -38,6 +38,7 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Budget_Read_Only_Field__c` | A field (often a formula) that, when true, makes the whole grid read-only. |
 | `Budget_Variance_Threshold_Field__c` | Variance threshold percent used in reporting mode. |
 | `Budget_Actuals_Mode_Field__c` | Actuals mode picklist, `Direct` or `Allocation`; blank means Direct. See [Claims & Allocation Mode](../features/claims-and-allocation-mode.md). |
+| `Budget_Claim_Across_Periods_Field__c` | Checkbox or formula; checked, the claim sheet's Budgeted, Prior claimed and Remaining show the claim's period with the grant total beneath. Blank or unchecked keeps them on the claim's period only. Allocation mode only. See [Claiming across periods](../features/claims-and-allocation-mode.md#claiming-across-periods). |
 | `Budget_Start_Date_Field__c` / `Budget_End_Date_Field__c` | The budget's own date window. Blank shows every period; mapped, periods outside the window are hidden only while they hold no non-zero figures. See [Scoping periods with budget dates](../features/budget-grid-and-modes.md#scoping-periods-with-budget-dates). |
 | `Budget_Has_Violations_Field__c` / `Budget_Violation_Count_Field__c` / `Budget_Violation_Details_Field__c` | Fields the package stamps with the grid's violation state (checkbox, number, long text: one breach per line). Blank disables stamping. See [Violations as data on the budget](../features/limits-validation-and-reporting.md#violations-as-data-on-the-budget). |
 
@@ -76,7 +77,7 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Value_Amount_Field__c` / `Value_Quantity_Field__c` / `Value_Percent_Field__c` | The planned figure, one per mode. |
 | `Value_Actual_Amount_Field__c` / `Value_Actual_Quantity_Field__c` / `Value_Actual_Percent_Field__c` | The actual figure entered in reporting mode. |
 | `Value_Name_Field__c` | Line item name. |
-| `Value_Grouping_Identifier_Field__c` | Groups the cells of one line item across periods. |
+| `Value_Grouping_Identifier_Field__c` | Groups the cells of one line item across periods. The grid writes it on every save, so everyone who saves needs edit access to it. |
 | `Value_Fixed_Field__c` | Marks a cell fixed so split-evenly and fills skip it. |
 | `Value_Estimate_FileUpload_Field__c` | Long text the file upload field in your value edit form writes for estimates. The authoring grid lights a cell's icon once files are there, and a Requires Estimate category flags a money line that has none. See [Attachments on line items](../features/budget-grid-and-modes.md#attachments-on-line-items). |
 | `Value_Receipt_FileUpload_Field__c` | The same for receipts, read by Direct reporting sheets. Allocation mode reads the claim line's own upload field instead, since a receipt belongs to the claim. |
@@ -139,7 +140,7 @@ picklist; your Flow owns the Name.
 What stays untranslated, on purpose:
 
 - **Mappings the package branches on** are always read by value: `Category_Mode_Field__c`,
-  `Budget_Actuals_Mode_Field__c`, `Category_Line_Item_Mode_Field__c`, the submitted, fixed, not-fundable,
+  `Budget_Actuals_Mode_Field__c`, `Budget_Claim_Across_Periods_Field__c`, `Category_Line_Item_Mode_Field__c`, the submitted, fixed, not-fundable,
   requires-estimate and requires-receipt flags. A translated mode would break the branch that reads it.
   `Category_Icon_Field__c` is a key the grid resolves to an icon, not text, so it is read by value too.
 - **Sorting.** SOQL cannot order by a label, so a picklist name sorts in the picklist's own definition

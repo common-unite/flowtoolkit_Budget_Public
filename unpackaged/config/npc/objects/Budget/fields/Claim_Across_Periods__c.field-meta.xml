@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Claim_Across_Periods__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Sets how the Universal Budget claim sheet measures each line on this budget. Unchecked (the default): Budgeted, Prior Claimed and Remaining show only the claim&apos;s period. Checked: each of those figures shows the claim&apos;s period on top and the total for every period of the budget beneath it, so a grantee sees what is left on the line for the whole grant and can claim against money planned for a later period; each Remaining line turns red on its own. Either way the claim is recorded in the claim&apos;s period; when the line has no amount in that period, saving the claim adds one at zero first. Allocation mode only; ignored in Direct mode. Replace it with a formula to set the scope per program, stage or template. Takes effect only when mapped as the Budget Claim Across Periods Field on the Budget Configuration.</description>
+    <inlineHelpText>Checked: Budgeted, Prior Claimed and Remaining show the claim&apos;s period with the total for every period beneath it, so a claim can draw on money planned in any period. Unchecked: they show the claim&apos;s period only. Claims are always recorded in the claim&apos;s period. Allocation mode only.</inlineHelpText>
+    <label>Claim Across Periods</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

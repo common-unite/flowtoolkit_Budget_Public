@@ -227,6 +227,10 @@
         <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Actuals_Mode__c</value>
     </values>
     <values>
+        <field>FlowToolKit__Budget_Claim_Across_Periods_Field__c</field>
+        <value xsi:type="xsd:string">Budget.%%%NAMESPACED_ORG%%%Claim_Across_Periods__c</value>
+    </values>
+    <values>
         <field>FlowToolKit__Budget_Start_Date_Field__c</field>
         <value xsi:type="xsd:string">Budget.PeriodStartDate</value>
     </values>

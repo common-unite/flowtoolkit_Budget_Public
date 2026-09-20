@@ -104,6 +104,11 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>Budget.Claim_Across_Periods__c</field>
+        <readable>true</readable>
+        <editable>true</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>Budget.Requested_Amount__c</field>
         <readable>true</readable>
         <editable>true</editable>
@@ -289,4 +294,16 @@
         <viewAllRecords>false</viewAllRecords>
         <modifyAllRecords>false</modifyAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>BudgetPeriodPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>BudgetPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>FundingDisbursementPrint</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
 </PermissionSet>

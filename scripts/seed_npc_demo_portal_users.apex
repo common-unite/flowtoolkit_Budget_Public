@@ -27,12 +27,16 @@ if (runningUser.UserRoleId == null) {
     return;
 }
 
-// the four demo people: grantee staff by contact, household members through their person accounts
-Set<String> seedEmailSet = new Set<String>{
+// the four demo people in licence priority order: grantee staff by contact, then the household members through
+// their person accounts. A bare CustomerCommunityPlus feature grants ONE licence, so whoever is first gets it.
+List<String> seedEmails = new List<String>{
     'sofia.ramirez@example.org', 'james.whitfield@example.org',
     'maria.alvarez@example.org', 'daniel.alvarez@example.org'
 };
-List<Contact> portalContacts = [SELECT Id, FirstName, LastName, Email FROM Contact WHERE Email IN :seedEmailSet];
+Map<String, Contact> contactByEmailMap = new Map<String, Contact>();
+for (Contact record : [SELECT Id, FirstName, LastName, Email FROM Contact WHERE Email IN :seedEmails]) contactByEmailMap.put(record.Email, record);
+List<Contact> portalContacts = new List<Contact>();
+for (String email : seedEmails) if (contactByEmailMap.containsKey(email)) portalContacts.add(contactByEmailMap.get(email));
 if (portalContacts.isEmpty()) {
     System.debug('No demo contacts found - run seed_npc_demo_party.apex first.');
     return;
@@ -64,14 +68,18 @@ for (Contact portalContact : portalContacts) {
     ));
 }
 
-if (!portalUsers.isEmpty()) {
-    insert portalUsers;
-    for (User portalUser : portalUsers) {
-        try { System.setPassword(portalUser.Id, demoPassword); } catch (Exception e) { System.debug('Password not set for ' + portalUser.Username + ': ' + e.getMessage()); }
-    }
+// one insert per user, never a batch: a batch past the licence count is rejected whole, one at a time creates as
+// many as the org can license and names the rest
+Integer createdCount = 0;
+List<String> skipped = new List<String>();
+for (User portalUser : portalUsers) {
+    Database.SaveResult result = Database.insert(portalUser, false);
+    if (!result.isSuccess()) { skipped.add(portalUser.Email + ' (' + result.getErrors()[0].getStatusCode() + ')'); continue; }
+    createdCount++;
+    try { System.setPassword(portalUser.Id, demoPassword); } catch (Exception e) { System.debug('Password not set for ' + portalUser.Username + ': ' + e.getMessage()); }
 }
 
-System.debug('Portal users: ' + portalUsers.size() + ' created, ' + existingUserContactIdSet.size() + ' already existed. Password for all: ' + demoPassword);
+System.debug('Portal users: ' + createdCount + ' created, ' + existingUserContactIdSet.size() + ' already existed, skipped: ' + skipped + '. Password for all: ' + demoPassword);
 for (User portalUser : [SELECT FirstName, LastName, Username FROM User WHERE ContactId IN :portalContactIdSet ORDER BY LastName, FirstName]) {
     System.debug('  ' + portalUser.FirstName + ' ' + portalUser.LastName + ' -> ' + portalUser.Username);
 }
