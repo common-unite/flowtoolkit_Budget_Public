@@ -488,9 +488,11 @@ orgs:
             config_file: orgs/dev.json
             days: 30
             namespaced: True
-        # NPC demo org shared by feature/grantmaking-extension (parked 2026-09-16)
-        # and sprint/2026-09-16 (#55 claim sheet across periods). Grantmaking
-        # shape because both need the NPC data model and the claim seed data.
+        # NPC demo org for feature/grantmaking-extension (parked 2026-09-16).
+        # Grantmaking shape because that work needs the NPC data model and the
+        # claim seed data. Kept when sprint/2026-09-16 merged and was deleted
+        # (#55 shipped in 0.12.0.1), because the parked branch resumes on it.
+        # The alias keeps its original date; renaming it would orphan the org.
         # cci flow run npc_dev_org --org sprint_2026-09-12
         sprint_2026-09-12:
             config_file: orgs/npc.json
