@@ -11,6 +11,71 @@ project:
         default_branch: 'main'
     source_format: sfdx
 
+
+plans:
+    # MetaDeploy plans for the MANAGED PACKAGE ONLY (#95). The NPC and Outbound Funds
+    # bundle plans live in #65 and need an install_ofm_client flow that does not exist yet.
+    #
+    # Frozen steps carry options, checks and ui_options only, so ignore_failure never
+    # reaches the worker: every step must succeed on its own. Gates sit on task steps,
+    # because checks on a flow step are silently dropped at freeze time.
+    install:
+        slug: install
+        title: Install Universal Budget
+        tier: primary
+        preflight_message: "Installs the Universal Budget managed package and the Flow Tool Kit packages it depends on. Universal Budget reads your own objects, so after installing you map your budget, category, period and value objects in Budget Configuration. Nothing in your org is changed until you do."
+        post_install_message: "Universal Budget is installed. It does not know your data model yet, so the next step is to map it: create a Budget Configuration record naming your budget object and its category, period and value objects. The mapping guide is at https://github.com/common-unite/flowtoolkit_Budget_Public/blob/main/documents/configuration/mapping-your-data-model.md and the quickstart at https://github.com/common-unite/flowtoolkit_Budget_Public/blob/main/documents/getting-started/quickstart.md. Then assign the Form (Universal Budget User) permission set to everyone who edits budgets, and Form (Universal Budget Template Manager) to the admins who build templates. Release notes for every version are at https://github.com/common-unite/flowtoolkit_Budget_Public/releases."
+        checks:
+            - when: "not tasks.check_lws_enabled()['is_enabled']"
+              action: error
+              message: "Lightning Web Security must be enabled. Go to Setup > Session Settings and turn on 'Use Lightning Web Security for Lightning web components'. Without it, Lightning Locker wraps every record the budget grid reads and a large budget becomes unusably slow."
+            - when: "not tasks.check_enhanced_email()['is_enabled']"
+              action: error
+              message: "Enhanced Email must be enabled. Go to Setup > Enhanced Email and turn it on. Flow Tool Kit requires it as a package dependency."
+            - when: "tasks.check_budget_installed()['is_installed']"
+              action: warn
+              message: "Universal Budget is already installed in this org. Use the Upgrade plan instead to move to a newer version."
+        steps:
+            1:
+                flow: dependencies
+                ui_options:
+                    description: "Installs Flow Tool Kit at the version this release was built against. A package the org already has at that version is skipped."
+            2:
+                task: install_managed
+                ui_options:
+                    description: "Installs the Universal Budget managed package: the budget grid, the Budget Sheet print component, the Budget Configuration metadata type and the supporting Apex. Skipped automatically if this exact version is already installed."
+            3:
+                task: update_admin_profile
+                ui_options:
+                    description: "Grants the System Administrator profile access to the Universal Budget Apex classes and the Budget Configuration metadata type. The package ships with permissions closed, so an admin needs this to configure a budget straight after installing. Safe to re-run."
+
+    upgrade:
+        slug: upgrade
+        title: Upgrade Universal Budget
+        tier: additional
+        preflight_message: "Upgrades Universal Budget and the Flow Tool Kit packages it depends on. Your budgets, Budget Configuration records and permission sets are not touched."
+        post_install_message: "Universal Budget is upgraded. Your budgets, Budget Configuration records and permission sets were not changed. Release notes for every version are at https://github.com/common-unite/flowtoolkit_Budget_Public/releases, and the feature guides at https://github.com/common-unite/flowtoolkit_Budget_Public/blob/main/documents/README.md cover anything new."
+        checks:
+            - when: "not tasks.check_budget_installed()['is_installed']"
+              action: error
+              message: "Universal Budget is not installed in this org yet. Run the Install plan instead."
+            - when: "not tasks.check_lws_enabled()['is_enabled']"
+              action: error
+              message: "Lightning Web Security must be enabled. Go to Setup > Session Settings and turn on 'Use Lightning Web Security for Lightning web components'."
+        steps:
+            1:
+                task: update_dependencies
+                ui_options:
+                    description: "Upgrades Flow Tool Kit to the version this release was built against, where the org is behind."
+            2:
+                task: install_managed
+                ui_options:
+                    description: "Upgrades the Universal Budget managed package. Skipped automatically if this exact version is already installed."
+            3:
+                task: update_admin_profile
+                ui_options:
+                    description: "Re-applies System Administrator access to the Universal Budget Apex classes and the Budget Configuration metadata type, picking up anything new in this version. Safe to re-run."
+
 flows:
     # ── Install flows: everything a working org needs, no demo-org extras ──────
     # NPC/Grantmaking flavor. Requires a Grantmaking-enabled org (orgs/npc.json
@@ -359,6 +424,23 @@ tasks:
     export_form:
         class_path: cci_flowtoolkit_tasks.export_form.ExportFormMetadata
 
+    # Preflight checks for the MetaDeploy plans (#95). Vendored into tasks/ because the
+    # MetaDeploy worker runs stock CumulusCI and cannot import cci_flowtoolkit_tasks.
+    # Reference copies belong in cci-flowtoolkit-tasks/repo_tasks/.
+    check_lws_enabled:
+        class_path: tasks.check_lws_enabled.CheckLWSEnabled
+
+    check_enhanced_email:
+        class_path: tasks.check_enhanced_email.CheckEnhancedEmailEnabled
+
+    # by NAME, not namespace: Universal Budget shares the FlowToolKit namespace with the
+    # base package, so 'FlowToolKit' in get_installed_packages() is already true once the
+    # base is in and a genuine first install would look like an upgrade
+    check_budget_installed:
+        class_path: tasks.check_package_installed.CheckPackageInstalled
+        options:
+            package_name: "Flow Tool Kit: Universal Budget"
+
     # Mirrors public-facing files (docs, project config, the unpackaged config
     # bundles, seed scripts) to the companion public repo so clients can browse
     # documentation, deploy the demo config, see releases, and file issues
@@ -369,7 +451,7 @@ tasks:
             branch: "main"
             create_release: true
             release_body: true
-            include: [ "cumulusci.yml","sfdx-project.json","orgs/","README.md","unpackaged/","scripts/","documents/" ]
+            include: [ "cumulusci.yml","sfdx-project.json","orgs/","README.md","unpackaged/","scripts/","documents/","tasks/" ]
 
     robot:
         options:
