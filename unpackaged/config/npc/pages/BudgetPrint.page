@@ -48,7 +48,7 @@
             <div class="print-head__title"><apex:outputText value="{!Budget.Name}"/></div>
             <apex:outputPanel layout="block" styleClass="print-head__sub" rendered="{!NOT(ISBLANK(Budget.Description))}"><apex:outputText value="{!Budget.Description}"/></apex:outputPanel>
         </div>
-        <c:BudgetSheet recordId="{!Budget.Id}"/>
+        <%%%NAMESPACE_OR_C%%%:BudgetSheet recordId="{!Budget.Id}"/>
     </body>
     </html>
 </apex:page>

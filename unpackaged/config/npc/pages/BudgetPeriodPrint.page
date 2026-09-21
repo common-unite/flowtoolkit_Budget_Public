@@ -51,15 +51,15 @@
     <body>
         <div class="print-head">
             <div class="print-head__title">
-                <apex:outputText value="{!$Label.Budget_Report_Title}">
+                <apex:outputText value="{!$Label.%%%NAMESPACE%%%Budget_Report_Title}">
                     <apex:param value="{!BudgetPeriod.Name}"/>
                 </apex:outputText>
             </div>
             <apex:outputPanel layout="block" rendered="{!BudgetPeriod.IsSubmitted}">
-                <span class="print-head__lock"><apex:outputText value="{!$Label.Budget_Report_Submitted}"/></span>
+                <span class="print-head__lock"><apex:outputText value="{!$Label.%%%NAMESPACE%%%Budget_Report_Submitted}"/></span>
             </apex:outputPanel>
         </div>
-        <c:BudgetSheet recordId="{!BudgetPeriod.Id}"/>
+        <%%%NAMESPACE_OR_C%%%:BudgetSheet recordId="{!BudgetPeriod.Id}"/>
     </body>
     </html>
 </apex:page>
