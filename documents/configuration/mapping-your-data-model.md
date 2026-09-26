@@ -40,7 +40,7 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Budget_Actuals_Mode_Field__c` | Actuals mode picklist, `Direct` or `Allocation`; blank means Direct. See [Claims & Allocation Mode](../features/claims-and-allocation-mode.md). |
 | `Budget_Claim_Across_Periods_Field__c` | Checkbox or formula; checked, the claim sheet's Budgeted, Prior claimed and Remaining show the claim's period with the grant total beneath. Blank or unchecked keeps them on the claim's period only. Allocation mode only. See [Claiming across periods](../features/claims-and-allocation-mode.md#claiming-across-periods). |
 | `Budget_Start_Date_Field__c` / `Budget_End_Date_Field__c` | The budget's own date window. Blank shows every period; mapped, periods outside the window are hidden only while they hold no non-zero figures. See [Scoping periods with budget dates](../features/budget-grid-and-modes.md#scoping-periods-with-budget-dates). |
-| `Budget_Has_Violations_Field__c` / `Budget_Violation_Count_Field__c` / `Budget_Violation_Details_Field__c` | Fields the package stamps with the grid's violation state (checkbox, number, long text: one breach per line). Blank disables stamping. See [Violations as data on the budget](../features/limits-validation-and-reporting.md#violations-as-data-on-the-budget). |
+| `Budget_Has_Violations_Field__c` / `Budget_Violation_Count_Field__c` / `Budget_Violation_Details_Field__c` | Fields the package stamps with the grid's violation state (checkbox, number, Rich Text Area: a bulleted list of breaches; a Long Text Area gets one breach per line). Blank disables stamping. See [Violations as data on the budget](../features/limits-validation-and-reporting.md#violations-as-data-on-the-budget). |
 
 ## Category fields
 
