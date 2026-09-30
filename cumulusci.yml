@@ -140,6 +140,7 @@ flows:
                         - BudgetPeriod_After_Save_Budget_Automation
                         - BudgetCategoryValue_After_Update_Sync_Line_Item_Names
                         - BudgetCategoryValue_Before_Delete_Sync
+                        - BudgetCategoryValue_Before_Save_Cell_Key
                         - BudgetAllocation_After_Save_Actuals_Sync
                         - BudgetAllocation_Before_Delete_Actuals_Sync
                         - FundingDisbursement_After_Save_Actuals_Sync
@@ -205,6 +206,7 @@ flows:
                         - BudgetPeriod_After_Save_Budget_Automation
                         - BudgetCategoryValue_After_Update_Sync_Line_Item_Names
                         - BudgetCategoryValue_Before_Delete_Sync
+                        - BudgetCategoryValue_Before_Save_Cell_Key
                         - BudgetAllocation_After_Save_Actuals_Sync
                         - BudgetAllocation_Before_Delete_Actuals_Sync
                         - FundingDisbursement_After_Save_Actuals_Sync
@@ -287,6 +289,7 @@ flows:
                         - OFM_Budget_Period_After_Save_Budget_Automation
                         - OFM_Budget_Value_After_Update_Sync_Line_Item_Names
                         - OFM_Budget_Value_Before_Delete_Sync
+                        - OFM_Budget_Value_Before_Save_Cell_Key
                         - OFM_Funding_Request_After_Create_Clone_Template_Budget
                 ui_options:
                     name: "Activate budget automation flows"

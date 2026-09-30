@@ -9,6 +9,11 @@
         <name>%%%NAMESPACED_ORG%%%Fixed__c</name>
     </fields>
     <fields>
+        <help>Défini automatiquement. Empêche deux valeurs budgétaires pour le même poste sur la même période.</help>
+        <label>Clé de cellule</label>
+        <name>%%%NAMESPACED_ORG%%%Cell_Key__c</name>
+    </fields>
+    <fields>
         <label>Identifiant de regroupement</label>
         <name>%%%NAMESPACED_ORG%%%Grouping_Identifier__c</name>
     </fields>
