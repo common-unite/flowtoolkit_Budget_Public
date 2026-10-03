@@ -1,5 +1,6 @@
 {
   "orgName": "Flow Tool Kit - NPC Dev Org",
+  "release": "previous",
   "edition": "Enterprise",
   "hasSampleData": false,
   "features": [

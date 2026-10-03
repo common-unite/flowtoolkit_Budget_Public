@@ -31,15 +31,9 @@ You can also click any category to see its start date, end date, and any limits 
 ### Violations as data on the budget
 
 Map the three violation fields and the package **stamps the same list onto the budget record**
-whenever a value is created, changed or deleted: a checkbox (any breach?), a count, and the details,
-one breached limit per item in your org's default language, worded exactly like the Review issues
-list. Removing the row that caused a breach clears the flag.
-
-Make the details field a **Rich Text Area**. The package stamps it as a bulleted list, so each breach
-stays on its own line wherever the text is shown: the record page, a Flow error message that quotes
-it, an email. A plain Long Text Area still works and gets one breach per line, but those line breaks
-disappear as soon as the text is quoted anywhere else. An existing Long Text Area can be converted to
-Rich Text in Setup without losing data; the next stamp rewrites it as a list.
+whenever a value is created, changed or deleted: a checkbox (any breach?), a count, and a long text
+carrying one breached limit per line in your org's default language, worded exactly like the Review
+issues list. Removing the row that caused a breach clears the flag.
 
 Category and period names in the stamp are the stored values, not picklist labels: the stamp is one language, the org default, so a picklist-named category appears by its API value even when the saving user works in another language (see [Translating configured text](../configuration/mapping-your-data-model.md#translating-configured-text)).
 

@@ -1,5 +1,6 @@
 {
   "orgName": "Flow Tool Kit: Budget - Release Test Org",
+  "release": "previous",
   "edition": "Enterprise",
   "settings": {
     "lightningExperienceSettings": {
@@ -19,6 +20,13 @@
     },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "communitiesSettings": {
+      "enableCommunityWorkspaces": true,
+      "enableNetworksEnabled": true
     }
-  }
+  },
+  "features": [
+    "Communities"
+  ]
 }

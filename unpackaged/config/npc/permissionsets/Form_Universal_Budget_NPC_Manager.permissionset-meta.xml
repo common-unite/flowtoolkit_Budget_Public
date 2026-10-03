@@ -229,11 +229,6 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
-        <field>BudgetCategoryValue.Cell_Key__c</field>
-        <readable>true</readable>
-        <editable>false</editable>
-    </fieldPermissions>
-    <fieldPermissions>
         <field>BudgetCategoryValue.Grouping_Identifier__c</field>
         <readable>true</readable>
         <editable>true</editable>
