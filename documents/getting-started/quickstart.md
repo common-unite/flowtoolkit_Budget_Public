@@ -41,6 +41,7 @@ In Lightning App Builder, drag **Universal Budget** onto a record page or tab.
 
 - On a **budget** record page, the grid loads that budget automatically.
 - On a **parent** record page (a request or program), set the *Related Field Api Name* property to the lookup that reaches the budget.
+- In **Experience Builder**, the same property is a text box rather than a picker: type the object-qualified path, for example `IndividualApplication.BudgetId`.
 - Optionally set brand and complementary colors to match your org or Experience site.
 
 ## 6. Open a budget

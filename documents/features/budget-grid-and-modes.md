@@ -59,6 +59,17 @@ Turn on **line item mode** for a category and it holds specific line items inste
 
 Line items roll up to the category total for reporting, while preserving the detail underneath — you see both "Construction: $130,000" and how that splits across site prep, the new wing, and cleanup. A category without line item mode simply holds one value per period.
 
+## One record per cell
+
+A cell is one category, one period and, in line item mode, one line. The package keeps it to **one value record**, in every org and from every source:
+
+- A save into a cell that already holds a record **updates** that record instead of inserting a second one, on the grid and on the claim sheet alike. If something slips a second record in between the check and the write, the rejected insert is retried as an update.
+- A cell that does hold several records, from before this guard or from an outside load, shows their **sum, read-only**, with no edit icon, since there is no single record for the form to open.
+- Every grid save ends with a **merge** of the safe duplicates: extra records with nothing attached (no claim lines, files, tasks or custom child records) are summed into the record that is kept and deleted. A record with anything attached is never touched; its cell stays a read-only sum for an admin to resolve. The merge runs as the saving user, so it only happens when that user can delete the values and read everything the attached-record check covers; a grantee's save leaves the merge to the next staff save.
+- A **clone** never copies a unique field and collapses a duplicated template cell into one summed record, so a template with a hidden duplicate no longer spreads it to every budget cloned from it.
+
+The NPC and Outbound Funds bundles add a second layer, a unique **Cell Key** field stamped by a before-save Flow, which makes the database itself refuse a second record for the same cell, from Data Loader included. The package never depends on it; see the [client install runbook](../getting-started/npc-client-install.md#post-install-configuration) for stamping the key on records that existed before the Flow.
+
 ## Attachments on line items
 
 Every cell carries **one** action icon, and it always opens the same thing: the edit form you mapped for that object. What changes is the glyph, so the grid tells a grantee what the line needs before they open it.
@@ -84,6 +95,8 @@ Modes mix freely within one budget: a program budget can have currency categorie
 ## Periods
 
 A period is a column. With the manage permission you can **Add period** and edit periods. A period carries a **name** (e.g., "Fiscal Year 2027"), a **sequence/position**, optional **start and end dates**, and a **maximum funding amount** that feeds validation. As with categories, changing a period's position renumbers the rest to stay gapless.
+
+A populated value whose period is blank, or belongs to another budget, has no column of its own. Rather than hide the money, the grid and the Budget Sheet PDF add a read-only **Unassigned** column, only while such values exist, and count it in every total, so the figures the user reads agree with the violation stamp. Open the value's record form to give it a period.
 
 ![The default Add/Edit Period form: name, sequence, description, date range, and funding limits](../screenshots/33-period-edit-form.png)
 

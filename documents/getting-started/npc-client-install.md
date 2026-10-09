@@ -96,6 +96,22 @@ template-driven overrides.
    `BudgetAllocation_After_Save_Actuals_Sync`, `BudgetAllocation_Before_Delete_Actuals_Sync` and
    `FundingDisbursement_After_Save_Actuals_Sync`; they keep disbursement amounts and value actuals in
    agreement with the claim lines.
+7. **Backfill the Cell Key.** `BudgetCategoryValue_Before_Save_Cell_Key` stamps the unique `Cell_Key__c`
+   (category | period | grouping identifier) on a value that is created, moves to another cell, or is
+   saved with a blank key. Values that existed before the Flow keep a blank key until something saves
+   them, so touch them once: export the Ids of every `BudgetCategoryValue` with a blank Cell Key and a
+   populated Grouping Identifier, and update them through Data Loader with no field changed, or run
+   this in the Developer Console:
+
+   ```apex
+   List<BudgetCategoryValue> values = [SELECT Id FROM BudgetCategoryValue WHERE Cell_Key__c = null AND Grouping_Identifier__c != null];
+   for (Database.SaveResult result : Database.update(values, false)) if (!result.isSuccess()) System.debug(result.getId() + ' ' + result.getErrors()[0].getMessage());
+   ```
+
+   A row rejected with *duplicate value found* is a cell that already holds two records. Open that
+   budget in the grid and save it once: the merge sums the safe duplicate into the kept record and
+   deletes it, after which the touch succeeds. A duplicate the merge refuses carries claim lines or
+   files; decide which record wins and delete the other by hand.
 
 | Permission set | Who |
 | --- | --- |

@@ -219,6 +219,11 @@
         <editable>true</editable>
     </fieldPermissions>
     <fieldPermissions>
+        <field>Budget_Value__c.Cell_Key__c</field>
+        <readable>true</readable>
+        <editable>false</editable>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>Budget_Value__c.Grouping_Identifier__c</field>
         <readable>true</readable>
         <editable>true</editable>
