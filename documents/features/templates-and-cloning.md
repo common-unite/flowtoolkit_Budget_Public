@@ -4,32 +4,43 @@ Most programs budget the same way every time. Rather than rebuild a budget per a
 
 ## Budget templates
 
-A template is just a budget you treat as a starting point — its categories, periods, value modes, icons, limits, and even seeded amounts. In the Outbound Funds example, a **Funding Program** holds a budget template, and every funding request under that program starts from it.
+A template is just a budget you treat as a starting point - its categories, periods, value modes, icons, limits, and even seeded amounts. In the Outbound Funds example, a **Funding Program** holds a budget template, and every funding request under that program starts from it.
 
 Because a template is an ordinary budget, you build and edit it with the same grid and forms as any other budget. See [The Budget Grid & Value Modes](budget-grid-and-modes.md).
 
-When a record has no budget yet, the grid offers **Start New Budget** — creating the budget straight from the record (here, a Funding Program) and attaching it, so you can build the template in place.
+When a record has no budget yet, the grid offers **Start New Budget** - creating the budget straight from the record (here, a Funding Program) and attaching it, so you can build the template in place.
 
 ![Starting a new budget directly from a Funding Program](../screenshots/33-start-new-budget-demo.gif)
 
 ## The Clone Budget action
 
-**Clone Budget** is an invocable action you can call from Flow. Given a template budget's Id, it deep-clones the whole tree — the budget, its categories, its periods, and its values — and rewires every lookup and grouping identifier so the new budget is fully independent of the template.
+**Clone Budget** is an invocable action you can call from Flow. Given a template budget's Id, it deep-clones the whole tree - the budget, its categories, its periods, and its values - and rewires every lookup and grouping identifier so the new budget is fully independent of the template.
 
 It works against whatever object model your configuration maps, so the same action clones NPC budgets, Outbound Funds budgets, or your own.
 
 ### A graceful contract
 
-The action never throws into its caller. It returns **Is Success** and **Error Message** outputs instead, so a record-triggered flow that clones a budget as part of a larger transaction is never rolled back by a clone problem — the flow can branch on the result and carry on.
+The action never throws into its caller. It returns **Is Success** and **Error Message** outputs instead, so a record-triggered flow that clones a budget as part of a larger transaction is never rolled back by a clone problem - the flow can branch on the result and carry on.
 
-<!-- image pending: 33-clone-after-create-demo.gif — The Clone Budget action cloning a template onto a new request -->
+### Exact copies: Copy Every Field (System Mode)
+
+By default the clone respects the running user's access: it copies only the fields that user may create, and reads and writes as that user. That is right for a grantee starting a budget from a template, but not for a snapshot. When a portal user's save sets off a snapshot, fields they cannot create (a category name, a maximum percentage, a fixed flag, your own reporting fields) would be left blank on the copy.
+
+Turn on **Copy Every Field (System Mode)** for an exact copy. The clone then reads and inserts in system mode and copies every field whatever the running user's field access. Two things stay the same:
+
+- **Sharing still applies.** The running user must be able to see the budget being copied.
+- **The copy is owned by the running user.** Set the owner on the Budget Template input if the snapshot should belong to someone else.
+
+Formula, roll-up, auto-number and unique fields are never copied in either mode.
+
+<!-- image pending: 33-clone-after-create-demo.gif - The Clone Budget action cloning a template onto a new request -->
 
 ## Auto-clone on create
 
 Pair Clone Budget with a record-triggered flow to stamp a fresh budget onto each new application or request automatically. Ready-made After-Create flows ship for both models:
 
-- **NPC Grantmaking** — clone a template onto a new application.
-- **Outbound Funds** — clone the funding program's template onto a new funding request.
+- **NPC Grantmaking** - clone a template onto a new application.
+- **Outbound Funds** - clone the funding program's template onto a new funding request.
 
 The new record links to its own budget, and the grantee opens it already populated with the program's structure, ready to fill in.
 

@@ -1,7 +1,6 @@
 {
   "orgName": "Flow Tool Kit: Budget - Preview Release Org",
   "edition": "Developer",
-  "release": "preview",
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
