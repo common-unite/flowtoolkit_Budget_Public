@@ -19,6 +19,12 @@
     },
     "languageSettings": {
       "enableTranslationWorkbench": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
     }
-  }
+  },
+  "features": [
+    "Communities"
+  ]
 }

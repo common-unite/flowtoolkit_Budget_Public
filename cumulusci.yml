@@ -501,9 +501,15 @@ orgs:
             config_file: orgs/npc.json
             days: 30
             namespaced: True
-        # Sprint 2026-10-14 (#113 Clone Budget system mode). NPC shape so a portal user can set off a clone.
-        # cci flow run npc_dev_org --org sprint_2026-10-14
-        sprint_2026-10-14:
+        # Sprint 2026-10-29. Lean dev shape.
+        # cci flow run dev_org --org sprint_2026-10-29
+        sprint_2026-10-29:
+            config_file: orgs/dev.json
+            days: 30
+            namespaced: True
+        # Sprint 2026-10-29, NPC shape: the grid and claim sheet need the Nonprofit Cloud budget objects.
+        # cci flow run npc_dev_org --org sprint_2026-10-29_npc
+        sprint_2026-10-29_npc:
             config_file: orgs/npc.json
             days: 30
             namespaced: True
