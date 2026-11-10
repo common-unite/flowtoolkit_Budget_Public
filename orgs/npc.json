@@ -38,6 +38,9 @@
     "StateAndCountryPicklist"
   ],
   "settings": {
+    "emailAdministrationSettings": {
+      "enableEnhancedEmailEnabled": true
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },

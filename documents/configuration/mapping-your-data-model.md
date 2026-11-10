@@ -35,7 +35,7 @@ A budget is four objects in a hierarchy: a **budget** owns **categories** (rows)
 | `Budget_Amount_Field__c` | Total budgeted amount. |
 | `Budget_Requested_Amount_Field__c` | Requested amount (usually the grant/request total). |
 | `Budget_Min_Field__c` / `Budget_Max_Field__c` | Overall minimum and maximum limits. |
-| `Budget_Read_Only_Field__c` | A field (often a formula) that, when true, makes the whole grid read-only. |
+| `Budget_Read_Only_Field__c` | A field (often a formula) that, when true, locks the budget's planned amounts in the grid: edit actions are hidden, each cell with a record opens its form read only for viewing, and the grid's save refuses planned-amount changes. Claims, allocations and reported actuals stay open. Saves made outside the grid are not blocked; add a validation rule for those. |
 | `Budget_Variance_Threshold_Field__c` | Variance threshold percent used in reporting mode. |
 | `Budget_Actuals_Mode_Field__c` | Actuals mode picklist, `Direct` or `Allocation`; blank means Direct. See [Claims & Allocation Mode](../features/claims-and-allocation-mode.md). |
 | `Budget_Claim_Across_Periods_Field__c` | Checkbox or formula; checked, the claim sheet's Budgeted, Prior claimed and Remaining show the claim's period with the grant total beneath. Blank or unchecked keeps them on the claim's period only. Allocation mode only. See [Claiming across periods](../features/claims-and-allocation-mode.md#claiming-across-periods). |

@@ -2,6 +2,9 @@
   "orgName": "Flow Tool Kit: Budget - Dev Org",
   "edition": "Developer",
   "settings": {
+    "emailAdministrationSettings": {
+      "enableEnhancedEmailEnabled": true
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
@@ -22,6 +25,9 @@
     },
     "communitiesSettings": {
       "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
     }
   },
   "features": [
